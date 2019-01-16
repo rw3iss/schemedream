@@ -1,0 +1,31 @@
+@import '../variables';
+
+@mixin form-actions() {
+    background: $color-stardust-dark;
+    padding: 15px;
+    border-bottom-left-radius: $button-border-radius * 2;
+    border-bottom-right-radius: $button-border-radius * 2;
+    display: flex;
+    justify-content: center;
+
+    .button {
+        min-width: 150px;
+        display: inline-flex; // todo: might not work in all browsers
+        margin: 10px;
+    }
+
+    &.row {
+        .button {
+            display: inline-flex;
+            margin: 0 $button-margin;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

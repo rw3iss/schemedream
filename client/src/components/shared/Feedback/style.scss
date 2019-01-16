@@ -1,0 +1,115 @@
+@import '../../../style/variables';
+@import '../../../style/mixins/layout';
+
+#feedback {
+    position: fixed;
+    z-index: 3;
+    bottom: 0px;
+    right: 40px;
+    overflow: hidden;
+
+    @media all and (min-width: 1540px) {
+        right: calc((100vw - 1540px + 80px) / 2);
+    }
+
+    .btn-feedback {
+        position: relative;
+        padding-bottom: 14px;
+        justify-content: center;
+        bottom: -5px;
+        transition: bottom .2s ease-in-out;
+
+        &:hover {
+            bottom: -3px;
+            transition: bottom .2s ease-in-out;
+        }
+    }
+
+    .feedback-panel {
+        opacity: 0;
+        transition: opacity .3s linear;
+
+        &.loaded {
+            opacity: 1;
+            transition: opacity .3s linear;
+        }
+
+        .inner {
+            max-width: 800px;
+            max-height: 100vh;
+            min-height: 450px;
+
+            .stacked-pane-container {
+                .stacked-pane {
+                    background: $color-stardust;
+                }
+
+                #result-pane {
+                    @include flex-col();
+                    align-items: center;
+                    justify-content: center;
+
+                    .success {
+                        color: $color-green;
+                        font-size: 1.5em;
+                    }
+                }
+
+                #waiting-pane {
+                    @include flex-col();
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(0,0,0,.85);
+
+                    .waiting {
+                        text-align: center;
+                        font-size: 1.4em;
+
+                        .icon-spinner {
+                            display: block;
+                            margin-top: 25px;
+                        }
+                    }
+                }
+            }
+
+            .content {
+                @include flex-col();
+
+                .page-header-sub {
+                    margin: 0px 0 15px;
+                }
+
+                .form {
+                    flex: 1;
+                    @include flex-col();
+
+                    .form-row {
+                        flex: 1;
+                        @include flex-col();
+
+                        .input-wrapper {
+                            flex: 1;
+                            @include flex-col();
+                            width: 100%;
+
+                            textarea {
+                                flex: 1;
+                                min-height: 150px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.success {
+            .inner {
+                min-height: 250px;
+                max-height: 250px;
+                transition: max-height .5s ease-in-out;
+            }
+        }
+    }
+
+}

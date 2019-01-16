@@ -1,0 +1,21 @@
+@import '../../../style/variables';
+@import '../../../style/mixins/layout';
+
+#view-dashboard {
+    padding: 50px 0 0;
+    margin: 0 auto; 
+    position: relative;
+
+    .header {
+        @include flex-row();
+        @include flex-middle();
+    }
+    
+    .actions {
+        margin-bottom: 10px;
+
+        .button {
+            margin: 0 5px;
+        }
+    }
+}

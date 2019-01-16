@@ -1,0 +1,171 @@
+@mixin box-shadow-none {
+    box-shadow: none !important;
+}
+
+@mixin box-shadow-1 {
+    box-shadow: 0 1px 3px $color-box-shadow;
+}
+
+@mixin box-shadow-2 {
+    box-shadow: 0 2px 8px $color-box-shadow;
+}
+
+@mixin box-shadow-3 {
+    box-shadow: 0 3px 24px $color-box-shadow, 0 5px 12px $color-box-shadow;
+}
+
+@mixin box-shadow-4 {
+    box-shadow: 0 4px 32px $color-box-shadow, 0 6px 12px $color-box-shadow;
+}
+
+@mixin box-shadow-1-dark {
+    box-shadow: 0 1px 3px $color-box-shadow-dark;
+}
+
+@mixin box-shadow-2-dark {
+    box-shadow: 1px 2px 8px $color-box-shadow-dark;
+}
+
+@mixin box-shadow-3-dark {
+    box-shadow: 1px 3px 8px $color-box-shadow-dark, 1px 4px 12px $color-box-shadow-dark;
+}
+
+@mixin box-shadow-4-dark {
+    box-shadow: 0 4px 32px $color-box-shadow-dark, 0 6px 12px $color-box-shadow-dark;
+}
+
+@mixin box-shadow-machine {
+    box-shadow: 0 20px 40px $color-box-shadow-machine;
+}
+
+@mixin box-shadow-machine-light {
+    box-shadow: 0 20px 40px $color-box-shadow-machine-light;
+}
+
+@mixin box-shadow-machine-lg {
+    box-shadow: 0 20px 60px $color-box-shadow-machine;
+}
+
+@mixin box-shadow-inset-1 {
+    box-shadow: inset 0 1px 2px $color-box-shadow-light;
+}
+
+@mixin box-shadow-inset-2 {
+    box-shadow: inset 0 1px 4px $color-box-shadow;
+}
+
+@mixin box-shadow-inset-3 {
+    box-shadow: inset 0 2px 12px $color-box-shadow;
+}
+
+@mixin box-shadow-inset-input {
+    box-shadow: inset 0 2px 4px $color-box-shadow-input;
+}
+
+@mixin backgroundUrlPng($filename) {
+    background-image: url("#{$static-image-url}/#{$filename}.png");
+}
+
+@mixin backgroundUrl($filename) {
+    .webp & {
+        background-image: url("#{$static-image-url}/#{$filename}.webp");
+    }
+
+    .no-webp & {
+        @include backgroundUrlPng($filename);
+    }
+}
+
+@mixin background-white() {
+    background: $color-white;
+}
+
+@mixin background-black-1() {
+    background: $color-black-1;
+}
+
+@mixin background-black-2() {
+    background: $color-black-2;
+}
+
+@mixin background-black-3() {
+    background: $color-black-3;
+}
+
+@mixin background-smoky-black() {
+    background: $color-smoky-black;
+}
+
+@mixin background-white-paper() {
+    background: $color-white-paper;
+}
+
+@mixin background-grey-6() {
+    background: $color-grey-6;
+}
+
+@mixin background-grey-5() {
+    background: $color-grey-5;
+}
+
+@mixin background-grey-9() {
+    background: $color-grey-9;
+}
+
+@mixin background-popover() {
+    background: $color-popover-background;
+}
+
+@mixin background-blackboard() {
+    @include backgroundUrl("backgrounds/blackboard");
+}
+
+@mixin background-pattern-slash-it() {
+    @include backgroundUrlPng("backgrounds/not_slash_it");
+}
+
+@mixin background-pattern-pentagons() {
+    @include backgroundUrlPng("backgrounds/congruent_outline");
+}
+
+@mixin background-pattern-lodyas() {
+    @include backgroundUrlPng("backgrounds/lodyas");
+}
+
+@mixin background-pattern-asanoha() {
+    @include backgroundUrlPng("backgrounds/asanoha");
+}
+
+@mixin background-pattern-carbon() {
+    @include backgroundUrlPng("backgrounds/real_cf");
+}
+
+@mixin background-stardust() {
+    @include backgroundUrlPng("backgrounds/stardust");
+}
+
+@mixin background-pattern-asanoha-fade() {
+    background: linear-gradient(360deg, #ffffff 0%, rgba(255, 255, 255, 0, .24) 63, 32%, rgba(255, 255, 255, 0, 16) 100%) ,
+        url("#{$static-image-url}/backgrounds/asanoha.png");
+    mix-blend-mode: normal;
+}
+
+@mixin background-inset() {
+    @include box-shadow-inset-3();
+    @include background-white();
+    border-left: 30px solid $color-black;
+}
+
+@mixin background-stardust-blurred() {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0, .2), rgba(0, 0, 0, 0, .2)),
+        url("#{$static-image-url}/backgrounds/stardust_blur.png") no-repeat fixed;
+    background-size: cover;
+}
+
+@mixin background-stardust-solid-dark() {
+    background: $color-stardust-dark;
+}
+
+@mixin background-stardust-solid-dark-hover() {
+    background: $color-stardust-dark-hover;
+}

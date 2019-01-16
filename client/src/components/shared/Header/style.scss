@@ -1,0 +1,109 @@
+@import '../../../style/variables';
+@import '../../../style/mixins/text';
+@import '../../../style/mixins/background';
+
+#header {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0px;
+
+    .logo {
+        color: white;
+        padding: 0px;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        .link {
+            padding: 0px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            color: $color-white;
+            white-space: nowrap;
+
+            .logo-img {
+                width: 32px;
+                height: 32px;
+            }
+
+            .logo-text {
+                margin: 5px;
+                letter-spacing: 0px;
+                font-size: 2em;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .beta {
+            white-space: nowrap;
+            font-size: 12pt;
+            color: #aab;
+            font-style: italic;
+            display: flex;
+            margin: 2px 0 0 7px;
+
+            a, a:active, a:visited {
+                color: #38d !important;
+                margin-left: 5px;
+            }
+        }
+    }
+
+    $navAnimSpeed: .5s;
+    .navigation {
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 20px 40px 0px auto;
+
+        li {
+            display: block;
+            padding: 0px 10px;
+
+            a {
+                display: block;
+                font-size: 1em;
+                text-decoration: none;
+                padding: 10px;
+                color: rgba(255,255,255,.8);
+                opacity: .8;
+                min-width: $icon-size-lg;
+                min-height: $icon-size-lg;
+                max-width: $icon-size-lg;
+                max-height: $icon-size-lg;
+
+                img {
+                    max-width: 100%;
+                }
+
+                &.link {
+                    @include text-light();
+                    border-radius: $button-border-radius;
+                    color:white;
+                    transition: background-color $navAnimSpeed ease-in-out, box-shadow $navAnimSpeed ease-in-out,
+                                opacity .3s ease-in-out, color .3 ease-in-out;
+
+                    &.active,
+                    &:hover {
+                        opacity: 1;
+                        transition: opacity .3s ease-in-out, color .3 ease-in-out;
+                        color: $color-green-1;
+                    }
+                }
+            }
+        }
+    }
+
+    @media all and (max-width: 800px) {
+        .logo {
+            a {
+                .logo-text {
+                    display: none;
+                }
+            }
+        }
+    }
+}

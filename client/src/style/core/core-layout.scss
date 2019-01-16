@@ -1,0 +1,192 @@
+@import "../variables";
+@import "../mixins/layout";
+
+.flex-right {
+    @include flex-right();
+}
+
+/* 
+.wrap {
+    flex-wrap: wrap;
+}
+
+.left {
+    justify-content: flex-start;
+}
+
+.right {
+    justify-content: flex-end;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.around {
+    justify-content: space-around;
+}
+
+.baseline {
+    align-items: baseline;
+}
+
+.align-flex-start {
+    align-items: flex-start;
+}
+
+.align-flex-end {
+    align-items: flex-end;
+}
+
+.self-flex-end {
+    align-self: flex-end;
+}
+
+.self-flex-start {
+    align-self: flex-start;
+}
+
+.display-none {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.half {
+    width: 50%;
+}
+
+.two-thirds {
+    width: 66%;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.fixed-full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.reactive-width-content-lg {
+    @media screen and (min-width: 0) and (max-width: $page-width-sm) {
+        width: $content-width-sm;
+    }
+
+    @media screen and (min-width: $page-width-sm+1) and (max-width: $page-width-md) {
+        width: $content-width-md;
+    }
+
+    @media screen and (min-width: $content-width-lg) {
+        width: $content-width-lg;
+    }
+
+    @media screen and (min-width: $content-width-xl) {
+        width: $content-width-xl;
+    }
+}
+
+.reactive-width-content-lg-overlap {
+    @media screen and (min-width: 0) and (max-width: $page-width-sm) {
+        width: $content-width-sm + $padding-sm * 2;
+    }
+
+    @media screen and (min-width: $page-width-sm+1) and (max-width: $page-width-md) {
+        width: $content-width-md + $padding-sm * 2;
+    }
+
+    @media screen and (min-width: $content-width-lg) {
+        width: $content-width-lg + $padding-sm * 2;
+    }
+
+    @media screen and (min-width: $content-width-xl) {
+        width: $content-width-xl + $padding-sm * 2;
+    }
+}
+
+.reactive-width-content {
+    @media screen and (min-width: 0) and (max-width: $page-width-sm) {
+        width: $content-width-sm;
+    }
+
+    @media screen and (min-width: $page-width-sm+1) and (max-width: $page-width-md) {
+        width: $content-width-md;
+    }
+
+    @media screen and (min-width: $content-width-lg) {
+        width: $content-width-lg;
+    }
+}
+
+.reactive-width-content-sm {
+    @media screen and (min-width: 0) and (max-width: $page-width-sm) {
+        width: $content-width-sm;
+    }
+
+    @media screen and (min-width: $page-width-sm+1) and (max-width: $page-width-md) {
+        width: $content-width-sm;
+    }
+
+    @media screen and (min-width: $content-width-lg) {
+        width: $content-width-md;
+    }
+}
+
+.reactive-width-page {
+    width: 100%;
+
+    @media screen and (min-width: 0) and (max-width: $page-width-sm) {
+        max-width: $page-width-sm;
+    }
+
+    @media screen and (min-width: $page-width-sm+1) and (max-width: $page-width-md) {
+        max-width: $page-width-md;
+    }
+
+    @media screen and (min-width: $content-width-lg) {
+        max-width: $page-width-xl;
+    }
+}
+
+.reactive-width-page-lg {
+    width: 100%;
+
+    @media screen and (min-width: 0) and (max-width: $page-width-sm) {
+        max-width: $page-width-sm;
+    }
+
+    @media screen and (min-width: $page-width-sm+1) and (max-width: $page-width-md) {
+        max-width: $page-width-md;
+    }
+
+    @media screen and (min-width: $content-width-lg) {
+        max-width: $page-width-xl;
+    }
+
+    @media screen and (min-width: $content-width-xl) {
+        max-width: $page-width-xl;
+    }
+}
+
+.flex-grow-0 {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
+.expander {
+    @extend .flex-grow-1;
+}
+ */

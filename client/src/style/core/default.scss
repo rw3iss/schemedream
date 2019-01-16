@@ -1,0 +1,92 @@
+@import '../mixins/layout';
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background: $color-black;
+    min-height: 100%;
+    @include flex-col();
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    width: 100%;
+    //overflow-x: hidden;
+    //overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    z-index: $z-default;
+    flex: 1;
+    
+    #root {
+        @include flex-col();
+        flex: 1;
+
+        > div[data-reactroot] {
+            @include flex-col();
+            flex: 1;
+        }
+    }
+}
+
+* {
+    font-family: $font-family;
+    letter-spacing: 1px;
+}
+
+i {
+    font-family: $font-family-icon;
+    font-style: normal;
+}
+
+pre {
+    font-family: monospace;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: $color-link-default;
+    cursor: pointer;
+    transition: color $trans-sh ease-in-out;
+
+    &:hover {
+        color: $color-link-default-hover;
+        transition: color $trans-sh ease-in-out;
+    }
+}
+
+p {
+    line-height: 1.5em;
+}
+
+.hidden {
+    display: none;
+}
+
+.icon-loader {
+    color: white;
+}
+
+#app-container.light {
+    .icon-loader {
+        color: black;
+    }
+}

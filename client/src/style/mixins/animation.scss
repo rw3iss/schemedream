@@ -1,0 +1,9 @@
+@mixin fade-in-view() {
+    opacity: 1;
+    transition: opacity $trans-md linear;
+}
+
+@mixin fade-out-view() {
+    opacity: 0;
+    transition: opacity $trans-md linear;
+}

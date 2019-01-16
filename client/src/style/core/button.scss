@@ -1,0 +1,138 @@
+@import '../mixins/button';
+
+.button {
+    display: inline-flex;
+}
+
+.button-sm {
+    @include button-sm();
+}
+
+.button-md {
+    @include button-md();
+}
+
+.button-lg {
+    @include button-lg();
+}
+
+.button-blue {
+    background-color: $color-button-blue;
+}
+
+.button-red {
+    background-color: $color-button-red;
+}
+
+.button-blue-sm {
+    @include button-sm();
+    background-color: $color-button-blue;
+}
+
+.button-blue-md {
+    @include button-md();
+    background-color: $color-button-blue;
+}
+
+.button-blue-lg {
+    @include button-lg();
+    background-color: $color-button-blue;
+}
+
+.button-blue-3-sm {
+    @include button-sm();
+    background-color: $color-blue-3;
+}
+
+.button-blue-3-md {
+    @include button-md();
+    background-color: $color-blue-3;
+}
+
+.button-blue-3-lg {
+    @include button-lg();
+    background-color: $color-blue-3;
+}
+
+.button-glass-lg {
+    @include button-lg();
+    @include _button-glass();
+}
+
+.button-glass-md {
+    @include button-md();
+    @include _button-glass();
+}
+
+.button-glass-sm {
+    @include button-sm();
+    @include _button-glass();
+}
+
+.has-popover {
+    position: relative;
+
+    &.hide-popover .popover {
+        display: none;
+    }
+
+    .popover {
+        position: absolute;
+        @include background-popover();
+        @include text-popover();
+        @include box-shadow-1-dark();
+        @include text-font-alt();
+        @include paragraph-sm();
+        border-radius: $button-border-radius;
+        border: 1px solid $color-popover-border;
+        max-height: 0;
+        opacity: 0;
+        padding: 7px 10px;
+        width: 200px;
+        z-index: $z-modal-window+1;
+        transition: max-height $trans-sh, opacity $trans-sh;
+        word-wrap: break-word;
+
+        &.above {
+            top: -60px;
+            left: 30px;
+
+            &::before {
+                border-top: 7px solid $color-popover-border;
+                border-right: 7px solid transparent;
+                border-left: 7px solid transparent;
+                bottom: -7px;
+                content: "";
+                display: block;
+                left: 50%;
+                margin-left: -7px;
+                position: absolute;
+            }
+        }
+    }
+
+    &:hover {
+        .popover {
+            opacity: 1;
+            max-height: 300px;
+        }
+    }
+}
+
+.button-inline {
+    display: inline-flex;
+}
+
+.button-circle {
+    @include _button();
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+}
+
+@media all and (max-width: 800px) {
+    .button {
+        display: block;
+        width: 100%;
+    }
+}

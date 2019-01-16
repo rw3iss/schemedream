@@ -1,0 +1,56 @@
+@import '../../../../style/mixins/layout';
+
+.color-complements {
+    @include flex-col();
+    width: 100%;
+
+    .controls {
+        @include flex-row();
+        @include flex-middle();
+        width: 100%;
+        background: rgba(0,0,0,.5);
+        padding: 5px;
+
+        .ctrl {
+            margin: 5px;
+
+            label {
+                margin-right: 5px;
+            }
+            
+            input {
+                font-size: 1.5em;
+                max-width: 50px;
+                padding: 0;
+                color: #333;
+            }
+        }
+    }
+
+    .colors {
+        width: 100%;
+        @include flex-row();
+        @include flex-wrap();
+
+        .color {
+            flex: 1;
+            height: 54px;
+            min-width: 8.3333%;
+            flex-grow: 0;
+
+            .hex {
+                margin: 0 2px;
+            }
+
+            .controls {
+                display: none;
+            }
+
+            &:hover {
+                .controls {
+                    display: block;
+                }
+            }
+        }
+    }
+}

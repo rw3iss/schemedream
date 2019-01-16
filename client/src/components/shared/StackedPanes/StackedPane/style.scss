@@ -1,0 +1,37 @@
+@import '../../../../style/mixins/layout';
+@import '../../../../style/mixins/forms';
+
+.stacked-pane {
+    @include flex-col();
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex: 1;
+    opacity: 0;
+    transition: opacity .3s linear;
+
+    &.no-invis {
+        opacity: 1;
+    }
+
+    &.active {
+        z-index: 1;
+        opacity: 1;
+        transition: opacity .3s linear;
+    }
+
+    > .content {
+        flex: 1;
+        padding: 25px;
+
+        h1 {
+            margin: 0 0 10px;
+        }
+    }
+
+    > .actions {
+        @include form-actions();
+    }
+}

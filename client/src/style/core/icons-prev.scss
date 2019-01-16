@@ -1,0 +1,181 @@
+@font-face {
+    font-family: icomoon;
+    src: url("#{$static-image-url}/fonts/icomoon.woff?f0akox") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@mixin _icon($id,$color) {
+    @extend .margin-r-sm;
+    text-decoration: none !important;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    &.icon-size-tn {
+        &::before {
+            font-size: 16px !important;
+        }
+    }
+
+    &.icon-size-sm {
+        &::before {
+            font-size: 24px !important;
+        }
+    }
+
+    &.icon-size-md {
+        &::before {
+            font-size: 32px !important;
+        }
+    }
+
+    &.icon-size-lg {
+        &::before {
+            font-size: 48px !important;
+        }
+    }
+
+    &.icon-size-xl {
+        &::before {
+            font-size: 64px !important;
+        }
+    }
+
+    &::before {
+        content: $id;
+        font-family: icomoon !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-variant: normal !important;
+        text-transform: none !important;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        color: $color-grey-4;
+        font-size: 32px;
+    }
+
+    &.icon-white {
+        &:hover {
+            color: $color-white;
+
+            &::before {
+                color: $color-white;
+            }
+        }
+
+        &::before {
+            color: $color-white;
+        }
+    }
+
+    &.icon-colored, &:hover {
+        &::before {
+            color: $color;
+        }
+    }
+
+    &.icon-grey {
+        color: $color-grey-4;
+
+        &:hover {
+            &::before {
+                color: $color-grey-4;
+            }
+        }
+    }
+}
+
+$color-facebook: #4665af;
+$color-twitter: #529fda;
+$color-medium: #00ab6c;
+$color-quote: $color-dark-blue-3;
+
+.icon-facebook {
+    @include _icon("\f09a",$color-facebook);
+}
+
+.icon-facebook-sq {
+    @include _icon("\f082",$color-facebook);
+}
+
+.icon-twitter-sq {
+    @include _icon("\f081",$color-twitter);
+}
+
+.icon-twitter {
+    @include _icon("\f099",$color-twitter);
+}
+
+.icon-medium {
+    @include _icon("\f23a",$color-medium);
+}
+
+.icon-quote-open {
+    @include _icon("\e977",$color-quote);
+    margin: 0;
+}
+
+.icon-quote-close {
+    @include _icon("\e978",$color-quote);
+    margin: 0;
+}
+
+.icon-information {
+    @include _icon("\e900",$color-grey-4);
+    margin: 0;
+}
+
+.icon-left-arrow {
+    @include _icon("\f177",$color-grey-4);
+    margin: 0;
+}
+
+.icon-add {
+    @include _icon("\e145",$color-grey-4);
+    margin: 0;
+}
+
+.icon-arrow-drop {
+    @include _icon("\e5c5",$color-grey-4);
+    margin: 0;
+}
+
+.icon-chevron-down {
+    @include _icon("\e313",$color-grey-4);
+    margin: 0;
+}
+
+.icon-ban {
+    @include _icon("\f05e",$color-grey-4);
+}
+
+.icon-grid {
+    @include _icon("\f009",$color-grey-4);
+}
+
+.icon-close {
+    @include _icon("\e5cd",$color-grey-4);
+}
+
+.icon-spinner {
+    @include _icon("\f110",$color-grey-4);
+    animation: spin 1s infinite steps(8);
+}
+
+.icon-border {
+    border: 2px solid $color-grey-4;
+    border-radius: $button-border-radius;
+    padding: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(359deg);
+    }
+}
