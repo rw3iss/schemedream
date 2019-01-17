@@ -213,7 +213,9 @@ export default class ColorPickingArea extends React.Component<any, any> {
     
     updatePickerPosition() {
         if (this.pickingArea && this.colorPicker) {
-            var size = this.pickingArea.clientWidth;
+            var sizeX = this.pickingArea.clientWidth;
+            var sizeY = this.pickingArea.clientHeight;
+            console.log("picker area", sizeX, sizeY)
             var value = 0;
             var offset = 5;
 
@@ -222,8 +224,8 @@ export default class ColorPickingArea extends React.Component<any, any> {
             if (this.state.pickerMode === 'HSL')
                 value = this.state.color.lightness;
 
-            var x = (this.state.color.saturation * size / 100) | 0;
-            var y = size - (value * size / 100) | 0;
+            var x = (this.state.color.saturation * sizeX / 100) | 0;
+            var y = sizeY - (value * sizeY / 100) | 0;
 
             this.colorPicker.style.left = x - offset + 'px';
             this.colorPicker.style.top = y - offset + 'px';
