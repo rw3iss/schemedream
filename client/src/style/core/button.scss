@@ -20,8 +20,16 @@
     background-color: $color-button-blue;
 }
 
+.button-green {
+    background-color: $color-button-green;
+}
+
 .button-red {
     background-color: $color-button-red;
+}
+
+.button-orange {
+    background-color: $color-button-orange;
 }
 
 .button-blue-sm {
@@ -52,6 +60,56 @@
 .button-blue-3-lg {
     @include button-lg();
     background-color: $color-blue-3;
+}
+
+
+.button-green-sm {
+    @include button-sm();
+    background-color: $color-button-green;
+}
+
+.button-green-md {
+    @include button-md();
+    background-color: $color-button-green;
+}
+
+.button-green-lg {
+    @include button-lg();
+    background-color: $color-button-green;
+}
+
+
+.button-orange-sm {
+    @include button-sm();
+    background-color: $color-button-orange;
+}
+
+.button-orange-md {
+    @include button-md();
+    background-color: $color-button-orange;
+}
+
+.button-orange-lg {
+    @include button-lg();
+    background-color: $color-button-orange;
+}
+
+
+
+
+.button-red-sm {
+    @include button-sm();
+    background-color: $color-button-red;
+}
+
+.button-red-md {
+    @include button-md();
+    background-color: $color-button-red;
+}
+
+.button-red-lg {
+    @include button-lg();
+    background-color: $color-button-red;
 }
 
 .button-glass-lg {

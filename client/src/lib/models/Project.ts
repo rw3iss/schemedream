@@ -1,9 +1,11 @@
 import ColorScheme from './ColorScheme';
 
 export default class Project {
+    public name: string;
     public colorSchemes: Array<ColorScheme>;
     
-    constructor() {
+    constructor(name?) {
+        this.name = name || '';
         this.colorSchemes = [];
     }
 

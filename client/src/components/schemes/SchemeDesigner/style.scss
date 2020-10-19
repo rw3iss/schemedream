@@ -1,4 +1,5 @@
-@import '../../../../style/mixins/layout';
+@import '../../../style/mixins/layout';
+@import '../../../style/variables';
 
 .color-scheme-designer {
     display: block;
@@ -21,7 +22,7 @@
             height: 100px;
 
             &.selected {
-                border: 2px solid white;
+                border: 2px solid $color-blue-main;
             }
 
             .info {
@@ -36,6 +37,10 @@
                     display: block;
                 }
             }
+        }
+        
+        .add-color {
+            margin-left: 5px;
         }
     }
 }

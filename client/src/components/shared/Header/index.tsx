@@ -49,7 +49,7 @@ export default class Header extends React.Component<any, any> {
 				
 				<div className="logo">
 					<Link to="/" replace className="link">
-						<span className="logo-text">Scheme Dream</span>
+						<div className="logo-text"><span className="scheme">Scheme</span><span className="dream">Dream</span></div>
 					</Link>
 					<span className="beta">(alpha, by <a href="http://www.ryanweiss.net" target="_blank">Ryan Weiss</a>)</span>
 				</div>

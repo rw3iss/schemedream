@@ -77,7 +77,7 @@
     font-size: $font-size-input-sm;
     line-height: 16px;
     height: $height-input-sm;
-    padding: $padding-tn;
+    padding: $padding-sm;
 }
 
 @mixin button-md() {
@@ -85,7 +85,7 @@
     font-size: $font-size-input-md;
     line-height: 22px;
     height: $height-input-md;
-    padding: $padding-tn $padding-ts;
+    padding: $padding-sm $padding-xs;
 }
 
 @mixin button-lg() {
@@ -93,5 +93,5 @@
     font-size: $font-size-input-lg;
     line-height: 26px;
     height: $height-input-lg;
-    padding: $padding-xs $padding-sm;
+    padding: $padding-sm $padding-md;
 }

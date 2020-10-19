@@ -1,7 +1,6 @@
 import * as React from 'react';
-import EventBus from 'eventbusjs';
 import { Color } from 'client/lib/models/Colors';
-import ColorComplements from 'components/shared/schemes/ColorComplements';
+import ColorComplements from 'components/schemes/ColorComplements';
 import EditableLabel from 'components/shared/EditableLabel';
 
 import './style.scss';
@@ -17,7 +16,6 @@ export default class ColorPickingArea extends React.Component<any, any> {
 
 	constructor(props) {
 		super(props);
-		const self = this;
 
 		this.state = {
             color: this.props.color || null,
@@ -363,9 +361,9 @@ export default class ColorPickingArea extends React.Component<any, any> {
                                     </div>
                                     <div className="controls">
                                         <div className="button button-blue-sm" onClick={() => self.onShowComplements()}>Complements</div>
-                                        <div className="button button-blue-sm button-inline" onClick={() => self.props.onAddNewColor(this.state.color)}>Save as New</div>
-                                        <div className="button button-blue-sm button-inline" onClick={() => self.onRevertColor(this.state.color)}>Revert</div>
-                                        <div className="button button-blue-sm" onClick={() => self.props.onDeleteColor(this.state.color)}>Delete</div>
+                                        <div className="button button-green-sm button-inline" onClick={() => self.props.onAddNewColor(this.state.color)}>Save New</div>
+                                        <div className="button button-orange-sm button-inline" onClick={() => self.onRevertColor(this.state.color)}>Revert</div>
+                                        <div className="button button-red-sm" onClick={() => self.props.onDeleteColor(this.state.color)}>Delete</div>
                                     </div>
                                 </div>
 

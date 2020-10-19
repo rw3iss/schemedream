@@ -1,8 +1,9 @@
 import * as React from 'react';
-import ColorScheme from 'lib/models/ColorScheme';
-import ColorSchemeDesigner from 'client/components/shared/Schemes/ColorSchemeDesigner';
-import './style';
 import Project from 'client/lib/models/Project';
+import SchemeDesigner from 'client/components/schemes/SchemeDesigner';
+import ColorScheme from 'lib/models/ColorScheme';
+
+import './style';
 
 interface IProps {
     project: Project;
@@ -32,12 +33,12 @@ export default class ProjectView extends React.Component<IProps, any> {
             (<div className="project">
 
                 <div className="controls">
-					<div className="button button-blue-md button-inline" onClick={() => self.onAddScheme()}>Add New Scheme</div>
+					<div className="button button-green-sm button-inline" onClick={() => self.onAddScheme()}>Add New Scheme</div>
                 </div>
 
                 { this.props.project.colorSchemes.map((cs, i) => {
                     return (
-                        <ColorSchemeDesigner key={i} 
+                        <SchemeDesigner key={i} 
                             colorScheme={cs} 
                             onDeleteScheme={cs => self.onDeleteScheme(cs)}/>
                     )

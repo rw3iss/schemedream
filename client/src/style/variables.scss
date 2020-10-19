@@ -53,6 +53,9 @@ $color-popover-border: rgba(65, 93, 107, 0.7);
 $color-green-1: rgba(#7fb44e,1);
 $color-green-2: rgba(#92cf59,1);
 $color-green-3: rgba(#a9eb6d,1);
+$color-orange-1: rgba(#eeb720,1);
+$color-orange-2: rgba(#faaa32,1);
+$color-orange-3: rgba(#ffbf10,1);
 
 $color-grey-1: rgba(255,255,255, .1);
 $color-grey-1-hover: rgba(255,255,255, .135);
@@ -128,16 +131,18 @@ $content-width-sm: 420px;
 /* Padding */
 $padding-xl: 150px;
 $padding-lg: 100px;
-$padding-ml: 75px;
-$padding-md: 50px;
-$padding-sm: 40px;
-$padding-xs: 25px;
-$padding-ts: 18px;
-$padding-tn: 10px;
+$padding-ml: 50px;
+$padding-md: 20px;
+$padding-sm: 10px;
+$padding-xs: 7px;
+$padding-ts: 5px;
+$padding-tn: 2px;
 
 /* Button */
 $color-button-blue: $color-blue-1;
 $color-button-red: $color-error-red;
+$color-button-green: $color-green-1;
+$color-button-orange: $color-orange-main;
 $button-border-radius: 3px;
 
 /* Inputs */

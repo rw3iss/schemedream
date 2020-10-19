@@ -6,7 +6,10 @@
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
-    padding: 0px;
+    padding: 0px 2px;
+    background: rgb(34,40,46);
+background: linear-gradient(164deg, rgba(34,40,46,1) 0%, rgba(66,66,57,1) 71%, rgba(48,40,40,1) 100%);
+
 
     .logo {
         color: white;
@@ -29,18 +32,27 @@
             }
 
             .logo-text {
-                margin: 5px;
+                margin: 0 0 0 4px;
                 letter-spacing: 0px;
-                font-size: 2em;
+                font-size: 1.5em;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                text-shadow: 0px 0px 9px rgba(145,150,155,.5);
+                
+                // .scheme {
+                //     position: relative;
+                //     top: -2px;
+                // }
+                .dream {
+                    margin-left: 5px;
+                }
             }
         }
 
         .beta {
             white-space: nowrap;
-            font-size: 12pt;
+            font-size: 10pt;
             color: #aab;
             font-style: italic;
             display: flex;

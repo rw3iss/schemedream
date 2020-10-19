@@ -17,14 +17,14 @@ export class Color {
             return this;
         }
 
-        this.r = 0;
-        this.g = 0;
-        this.b = 0;
+        this.r = 255;
+        this.g = 255;
+        this.b = 255;
         this.a = 1;
-        this.hue = 0;
-        this.saturation = 0;
-        this.value = 0;
-        this.lightness = 0;
+        this.hue = 100;
+        this.saturation = 100;
+        this.value = 100;
+        this.lightness = 100;
         this.format = 'HSV';
     }
 

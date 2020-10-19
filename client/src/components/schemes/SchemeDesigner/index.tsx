@@ -1,6 +1,6 @@
 import * as React from 'react';
 import EventBus from 'eventbusjs';
-import ColorPickingArea from 'components/shared/Schemes/ColorPickingArea';
+import ColorPickingArea from 'components/schemes/ColorPickingArea';
 import { Color } from 'lib/models/Colors';
 
 import './style';
@@ -15,11 +15,9 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 
 	constructor(props: any) {
 		super(props);
-        const self = this;
-
 		this.state = {
 			colorScheme: this.props.colorScheme,
-			selectedColors: [], // colors that are open/editing,
+			selectedColors: [],
 			hasChanges: false
 		}
 	}
@@ -111,8 +109,7 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 			(<div className={ 'container view color-scheme-designer' }>
 
 				<div className="controls">
-					<div className="button button-blue-md button-inline" onClick={() => self.addNewColor()}>Add Color</div>
-					<div className="button button-blue-md button-inline" onClick={() => self.props.onDeleteScheme(self.props.colorScheme)}>Delete Scheme</div>
+					<div className="button button-red-sm button-inline" onClick={() => self.props.onDeleteScheme(self.props.colorScheme)}>X Delete Scheme</div>
 				</div>
 
 				<div className="color-set">
@@ -126,6 +123,9 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 							</div>
 						)
 					})}
+            
+                    { <div className="button button-blue-sm button-inline add-color" onClick={() => self.addNewColor(null, true)}>+ Add Color</div> }
+
 				</div>
 				
 				{ this.state.selectedColors.map((c, i) => {
@@ -136,7 +136,6 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 						onDeleteColor={(c) => self.deleteColor(c)} /> );
 				})}
                     
-            { false && <div className="button button-blue-md button-inline" onClick={() => self.addNewColor(null, true)}>+ Add Color</div> }
 
 			</div>)
 			: null;

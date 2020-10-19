@@ -98,7 +98,7 @@ export default class ColorComplements extends React.Component<any, any> {
                             <div className="color" style={style} key={i}>
                                 <div className="hex">{c.getColor()}</div>
                                 <div className="controls">
-                                    <div className="button button-blue-sm button-inline" onClick={() => this.onAddComplement(c)}>Add</div>
+                                    <div className="button button-green-sm button-inline" onClick={() => this.onAddComplement(c)}>Add</div>
                                 </div>
                             </div>
                         )
