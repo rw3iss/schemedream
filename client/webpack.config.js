@@ -2,8 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-//const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
 const APP_DIR = path.resolve(__dirname, 'src');
@@ -57,7 +55,7 @@ let config = {
                 exclude: /node_modules/,
 
                 use: [
-                    'style-loader', // MiniCssExtractPlugin.loader,
+                    'style-loader',
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -102,7 +100,7 @@ let config = {
 
     devServer: {
         hot: true,
-        contentBase: './',
+        contentBase: './src',
         publicPath: '/',
         public: 'http://localhost:' + PORT,
         port: PORT,

@@ -262,15 +262,16 @@ export default class ColorPickingArea extends React.Component<any, any> {
             var picker_offset = 5;
 
             // width and height should be the same
-            var size = this.pickingArea.clientWidth;
+            var sizeX = this.pickingArea.clientWidth;
+            var sizeY = this.pickingArea.clientHeight;
 
-            if (x > size) x = size;
-            if (y > size) y = size;
+            if (x > sizeX) x = sizeX;
+            if (y > sizeY) y = sizeY;
             if (x < 0) x = 0;
             if (y < 0) y = 0;
 
-            var value = 100 - (y * 100 / size) | 0;
-            var saturation = x * 100 / size | 0;
+            var value = 100 - (y * 100 / sizeY) | 0;
+            var saturation = x * 100 / sizeX | 0;
 
             if (this.state.pickerMode === 'HSV')
                 this.state.color.setHSV(this.state.color.hue, saturation, value);

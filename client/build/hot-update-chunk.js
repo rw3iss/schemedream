@@ -1,178 +1,27 @@
-webpackHotUpdate(0,{
+webpackHotUpdate("app",{
 
-/***/ 150:
+/***/ "./src/components/shared/Schemes/ColorSchemeDesigner/index.tsx":
+/*!*********************************************************************!*\
+  !*** ./src/components/shared/Schemes/ColorSchemeDesigner/index.tsx ***!
+  \*********************************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_routes__ = __webpack_require__(409);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_client_components_shared_Header__ = __webpack_require__(419);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_client_components_shared_Feedback__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_client_components_shared_ErrorHandler__ = __webpack_require__(428);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_client_components_shared_Loader__ = __webpack_require__(430);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_client_lib_LocalStorage__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_eventbusjs__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_eventbusjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_eventbusjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__style_global_scss__ = __webpack_require__(432);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__style_global_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__style_global_scss__);
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-
-
-
-
-
-
-
-
-class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
-    constructor(props) {
-        super();
-        // Todo: load current theme from cookie/user
-        this.state = {
-            theme: 'dark'
-        };
-        // on App start, ask backend for latest user info:
-        this.bindEvents();
-    }
-    bindEvents() {
-        const self = this;
-        __WEBPACK_IMPORTED_MODULE_8_eventbusjs___default.a.addEventListener('APP_NEEDS_LOGIN', () => {
-            console.log("APP_NEEDS_LOGIN");
-            __WEBPACK_IMPORTED_MODULE_7_client_lib_LocalStorage__["a" /* default */].set('currentUser', null);
-            self.goToSignIn();
-        });
-        __WEBPACK_IMPORTED_MODULE_8_eventbusjs___default.a.addEventListener('USER_LOGGED_IN', () => {
-            console.log("USER_LOGGED_IN");
-            self.setState({
-                currentUser: __WEBPACK_IMPORTED_MODULE_7_client_lib_LocalStorage__["a" /* default */].get('currentUser')
-            });
-        });
-        __WEBPACK_IMPORTED_MODULE_8_eventbusjs___default.a.addEventListener('USER_LOGGED_OUT', () => {
-            console.log("USER_LOGGED_OUT");
-            __WEBPACK_IMPORTED_MODULE_7_client_lib_LocalStorage__["a" /* default */].set('currentUser', null);
-            self.goToSignIn();
-        });
-    }
-    // Todo: horrible hack, we should create another component wrapper (withRouter) 
-    // to handle this logic and all rendering below
-    isSignInPage() {
-        window.location.href.indexOf('signin') > -1;
-    }
-    componentWillMount() {
-        return __awaiter(this, void 0, void 0, function* () {
-            //this.loadLatestUser();
-        });
-    }
-    loadLatestUser() {
-        return __awaiter(this, void 0, void 0, function* () {
-            /*
-            if (!this.state.currentUser) {
-                let userRes = await Auth.tryLoadUser();
-                console.log("LOADING USER", userRes);
-                
-                if (userRes) {
-                    // okay, we found a valid user
-                    this.setState({
-                        currentUser: LocalStorage.get('currentUser')
-                    })
-                } else {
-                    // redirect to signin?
-                }
-            } */
-        });
-    }
-    goToSignIn() {
-        this.props.history.push('/signin');
-    }
-    onChangeTheme(theme) {
-        this.setState({
-            theme: theme
-        });
-    }
-    render() {
-        const self = this;
-        // todo: whackish for now
-        let isSignInPage = window.location.href.indexOf('signin') > -1;
-        // injects router/location into Header
-        const HeaderComponent = Object(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["f" /* withRouter */])(props => __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_client_components_shared_Header__["a" /* default */], Object.assign({}, props)));
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: "app-container", className: 'app-container ' + this.state.theme },
-                (this.state.currentUser || isSignInPage) &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "app-view", id: "app-view" },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](HeaderComponent, null),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__config_routes__["a" /* default */], null),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_client_components_shared_Feedback__["a" /* default */], null),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { id: "view-fade" }),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_client_components_shared_ErrorHandler__["a" /* default */], null)),
-                (!this.state.currentUser && !isSignInPage) &&
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "app-view unloaded", id: "app-view" },
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](HeaderComponent, null),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "view loaded" },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "loader" },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_6_client_components_shared_Loader__["a" /* default */], { size: "xl" }))),
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_client_components_shared_ErrorHandler__["a" /* default */], null)))));
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["default"] = App;
-
-
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ColorSchemeDesigner; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var components_shared_Schemes_ColorPickingArea__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/shared/Schemes/ColorPickingArea */ \"./src/components/shared/Schemes/ColorPickingArea/index.tsx\");\n/* harmony import */ var lib_models_Colors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lib/models/Colors */ \"./src/lib/models/Colors.ts\");\n/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style */ \"./src/components/shared/Schemes/ColorSchemeDesigner/style.scss\");\n/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\nclass ColorSchemeDesigner extends react__WEBPACK_IMPORTED_MODULE_0__[\"Component\"] {\n    constructor(props) {\n        super(props);\n        this.addNewColor = (color, select = false) => {\n            let newColor = new lib_models_Colors__WEBPACK_IMPORTED_MODULE_2__[\"Color\"](color);\n            newColor.original = new lib_models_Colors__WEBPACK_IMPORTED_MODULE_2__[\"Color\"](newColor);\n            this.props.colorScheme.addColor(newColor);\n            if (select) {\n                this.selectColor(newColor);\n            }\n            //this.onSchemeChanged();\n            this.forceUpdate();\n        };\n        this.changeColor = (color) => {\n            this.setState({\n                hasChanges: true\n            });\n        };\n        this.saveColor = (color) => {\n            this.setState({\n                hasChanges: false\n            });\n            // Set original to current change set\n            color.original = new lib_models_Colors__WEBPACK_IMPORTED_MODULE_2__[\"Color\"](color);\n            //this.onSchemeChanged();\n            this.forceUpdate();\n        };\n        this.deleteColor = (c) => {\n            this.props.colorScheme.deleteColor(c);\n            this.setState({\n                selectedColors: this.state.selectedColors.filter(_c => {\n                    return _c != c;\n                })\n            });\n        };\n        this.selectColor = (color) => {\n            const self = this;\n            let alreadySelected = false;\n            self.state.selectedColors.forEach((c) => {\n                if (c == color)\n                    alreadySelected = true;\n            });\n            if (!alreadySelected) {\n                // add to selected\n                self.setState({\n                    selectedColors: [...self.state.selectedColors, color]\n                });\n            }\n            else {\n                // remove from selected\n                self.setState({\n                    selectedColors: self.state.selectedColors.filter((c) => {\n                        return (c != color);\n                    })\n                });\n            }\n        };\n        const self = this;\n        this.state = {\n            colorScheme: this.props.colorScheme,\n            selectedColors: [],\n            hasChanges: false\n        };\n    }\n    componentDidMount() {\n        //this.loadScheme(this.props.colorScheme);\n    }\n    componentWillReceiveProps(nextProps) {\n        if (nextProps.colorScheme != this.props.colorScheme) {\n            this.clearState();\n        }\n    }\n    clearState() {\n        this.setState({\n            selectedColors: []\n        });\n    }\n    render() {\n        let self = this;\n        return this.props.colorScheme ?\n            (react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: 'container view color-scheme-designer' },\n                react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: \"controls\" },\n                    react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: \"button button-blue-md button-inline\", onClick: () => self.addNewColor() }, \"Add Color\"),\n                    react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: \"button button-blue-md button-inline\", onClick: () => self.props.onDeleteScheme(self.props.colorScheme) }, \"Delete Scheme\")),\n                react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: \"color-set\" }, this.props.colorScheme.colors.map((c, i) => {\n                    let colorHex = c.getColor(); // c.original.getColor();\n                    let style = { 'backgroundColor': colorHex };\n                    let isSelected = this.state.selectedColors.includes(c);\n                    return (react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: 'color' + (isSelected ? ' selected' : ''), style: style, onClick: () => self.selectColor(c), key: i },\n                        react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: \"info\" }, colorHex)));\n                })),\n                this.state.selectedColors.map((c, i) => {\n                    return (react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](components_shared_Schemes_ColorPickingArea__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { key: i, color: c, onColorChanged: (c) => self.changeColor(c), onColorSaved: (c) => self.saveColor(c), onAddNewColor: (c) => self.addNewColor(c), onDeleteColor: (c) => self.deleteColor(c) }));\n                }),\n                false && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: \"button button-blue-md button-inline\", onClick: () => self.addNewColor(null, true) }, \"+ Add Color\")))\n            : null;\n    }\n}\n\n\n//# sourceURL=webpack:///./src/components/shared/Schemes/ColorSchemeDesigner/index.tsx?");
 
 /***/ }),
 
-/***/ 162:
+/***/ "./src/components/views/ProjectView/index.tsx":
+/*!****************************************************!*\
+  !*** ./src/components/views/ProjectView/index.tsx ***!
+  \****************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_hot_loader_patch__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_hot_loader_patch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_hot_loader_patch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_hot_loader__ = __webpack_require__(370);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_hot_loader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_hot_loader__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_client_components_App__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(55);
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ProjectView; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var client_components_shared_Schemes_ColorSchemeDesigner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! client/components/shared/Schemes/ColorSchemeDesigner */ \"./src/components/shared/Schemes/ColorSchemeDesigner/index.tsx\");\n/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style */ \"./src/components/views/ProjectView/style.scss\");\n/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\nclass ProjectView extends react__WEBPACK_IMPORTED_MODULE_0__[\"Component\"] {\n    constructor(props) {\n        super(props);\n    }\n    onAddScheme() {\n        this.props.project.createNewColorScheme();\n        this.forceUpdate();\n    }\n    onDeleteScheme(cs) {\n        if (confirm(\"Are you sure you want to delete this color scheme?\")) {\n            this.props.project.deleteColorScheme(cs);\n            this.forceUpdate();\n        }\n    }\n    render() {\n        const self = this;\n        return this.props.project ?\n            (react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: \"project\" },\n                react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: \"controls\" },\n                    react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", { className: \"button button-blue-md button-inline\", onClick: () => self.onAddScheme() }, \"Add New Scheme\")),\n                this.props.project.colorSchemes.map((cs, i) => {\n                    return (react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](client_components_shared_Schemes_ColorSchemeDesigner__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { key: i, colorScheme: cs, onDeleteScheme: cs => self.onDeleteScheme(cs) }));\n                })))\n            : null;\n    }\n}\n\n\n//# sourceURL=webpack:///./src/components/views/ProjectView/index.tsx?");
 
-
-
-
-
-
-//import '../../globals'; // global function definitions
-const AppWithRouter = Object(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["f" /* withRouter */])(props => __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4_client_components_App__["default"], Object.assign({}, props)));
-__WEBPACK_IMPORTED_MODULE_2_react_dom__["render"](__WEBPACK_IMPORTED_MODULE_1_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_hot_loader__["AppContainer"], null,
-    __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["a" /* BrowserRouter */], null,
-        __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](AppWithRouter, null))), document.getElementById('root'));
-// Hot Module Replacement API 
-// Note: React Router v4 will throw an error saying you can't replace routes or history on the Router object
-// This is unavoidable for now.
-if (true) {
-    module.hot.accept(150, () => {
-        //const App = require('./components/App');
-        __WEBPACK_IMPORTED_MODULE_2_react_dom__["render"](__WEBPACK_IMPORTED_MODULE_1_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_hot_loader__["AppContainer"], null,
-            __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["a" /* BrowserRouter */], null,
-                __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](AppWithRouter, null))), document.getElementById('root'));
-    });
-}
-
-
-/***/ }),
-
-/***/ 57:
-false
+/***/ })
 
 })
