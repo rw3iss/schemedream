@@ -5,7 +5,6 @@ import EventBus from 'eventbusjs';
 
 import './style';
 
-let mounted = false;
 export default class Header extends React.Component<any, any> {
 
 	constructor(props) {
@@ -13,27 +12,26 @@ export default class Header extends React.Component<any, any> {
 		const self = this;
 
 		this.state = {
+            githubStars: '-'
 		}
 	}
 
 	componentDidMount() {
-		mounted = true;
-	}
+        this.loadGithubStarCount();
+    }
 
-	componentWillUnmount() {
-		mounted = false;
-	}
-/* 
-	tryLogout() {
-		if (mounted) {
-			this.setState({
-				isAuthenticated: false
-			})
-		}
+    loadGithubStarCount() {
+        const self = this;
+        fetch('https://api.github.com/repos/rw3iss/schemedream')
+        .then(r => r.json())
+        .then(r => {
+            console.log("github stars", )
+            self.setState({
+                githubStars: (r as any).stargazers_count
+            })
+        });
+    }
 
-		EventBus.dispatch("USER_LOGGED_OUT");
-	}
- */
 	render() {
 		const self = this;
 		const page = this.props.location.pathname;
@@ -58,7 +56,10 @@ export default class Header extends React.Component<any, any> {
 					{ false && <li className={section == '/dashboard' ? 'active' : ''}><Link to="/invite/12387618" replace className="link">Invited</Link></li> }
 				</ul>
 
-                <a className="github" href="https://github.com/rw3iss/schemedream" target="_blank"><img src="/schemedream/static/img/GitHub-Mark-Light-32px.png"/></a>
+                <a className="github" href="https://github.com/rw3iss/schemedream" target="_blank">
+                    <img src="/schemedream/static/img/GitHub-Mark-Light-32px.png"/>
+                    <span className="stars">{this.state.githubStars} ⭐</span>
+                </a>
 
 			</div>
 		);

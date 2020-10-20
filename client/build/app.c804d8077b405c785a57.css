@@ -478,12 +478,22 @@
         margin-left: 5px; }
   #header .github {
     margin: 2px 0 0 15px;
-    opacity: .8; }
+    opacity: .8;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
     #header .github img {
       max-width: 20px;
       height: auto; }
     #header .github:hover {
       opacity: 1; }
+    #header .github .stars {
+      margin: 0 0 0 5px;
+      color: white;
+      font-size: .85em; }
   #header .navigation {
     display: none;
     -ms-flex-wrap: nowrap;
