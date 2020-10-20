@@ -361,7 +361,7 @@ export default class ColorPickingArea extends React.Component<any, any> {
                                     </div>
                                     <div className="controls">
                                         <div className="button button-blue-sm" onClick={() => self.onShowComplements()}>Complements</div>
-                                        <div className="button button-green-sm button-inline" onClick={() => self.props.onAddNewColor(this.state.color)}>Save New</div>
+                                        <div className="button button-green-sm button-inline" onClick={() => self.props.onAddNewColor(this.state.color)}>Clone</div>
                                         <div className="button button-orange-sm button-inline" onClick={() => self.onRevertColor(this.state.color)}>Revert</div>
                                         <div className="button button-red-sm" onClick={() => self.props.onDeleteColor(this.state.color)}>Delete</div>
                                     </div>
