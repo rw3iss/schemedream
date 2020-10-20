@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Project from 'client/lib/models/Project';
 import SchemeDesigner from 'client/components/schemes/SchemeDesigner';
-import ColorScheme from 'lib/models/ColorScheme';
 
 import './style';
 
