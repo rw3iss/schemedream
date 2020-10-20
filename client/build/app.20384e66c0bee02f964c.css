@@ -1,4 +1,4 @@
-@import url(/static/css/font-awesome.css);
+@import url(/schemedream/static/css/font-awesome.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400|Roboto:100,100i,300,400,700);
 .color-complements {
@@ -940,32 +940,32 @@
   background: rgba(130, 39, 39, 0.9); }
 
 .webp .background-blackboard {
-  background-image: url("/static/backgrounds/blackboard.webp"); }
+  background-image: url("/schemedream/static/backgrounds/blackboard.webp"); }
 
 .no-webp .background-blackboard {
-  background-image: url("/static/backgrounds/blackboard.png"); }
+  background-image: url("/schemedream/static/backgrounds/blackboard.png"); }
 
 .background-pattern-slash-it {
-  background-image: url("/static/backgrounds/not_slash_it.png"); }
+  background-image: url("/schemedream/static/backgrounds/not_slash_it.png"); }
 
 .background-pattern-pentagons {
-  background-image: url("/static/backgrounds/congruent_outline.png"); }
+  background-image: url("/schemedream/static/backgrounds/congruent_outline.png"); }
 
 .background-pattern-lodyas {
-  background-image: url("/static/backgrounds/lodyas.png"); }
+  background-image: url("/schemedream/static/backgrounds/lodyas.png"); }
 
 .background-pattern-asanoha {
-  background-image: url("/static/backgrounds/asanoha.png"); }
+  background-image: url("/schemedream/static/backgrounds/asanoha.png"); }
 
 .background-pattern-carbon {
-  background-image: url("/static/backgrounds/real_cf.png"); }
+  background-image: url("/schemedream/static/backgrounds/real_cf.png"); }
 
 .background-stardust {
-  background-image: url("/static/backgrounds/stardust.png"); }
+  background-image: url("/schemedream/static/backgrounds/stardust.png"); }
 
 .background-pattern-asanoha-fade {
-  background: -webkit-gradient(linear, left bottom, left top, from(#ffffff), color-stop(63.32%, rgba(255, 255, 255, 0.24)), to(rgba(255, 255, 255, 0.16))), url("/static/backgrounds/asanoha.png");
-  background: linear-gradient(360deg, #ffffff 0%, rgba(255, 255, 255, 0.24) 63.32%, rgba(255, 255, 255, 0.16) 100%), url("/static/backgrounds/asanoha.png");
+  background: -webkit-gradient(linear, left bottom, left top, from(#ffffff), color-stop(63.32%, rgba(255, 255, 255, 0.24)), to(rgba(255, 255, 255, 0.16))), url("/schemedream/static/backgrounds/asanoha.png");
+  background: linear-gradient(360deg, #ffffff 0%, rgba(255, 255, 255, 0.24) 63.32%, rgba(255, 255, 255, 0.16) 100%), url("/schemedream/static/backgrounds/asanoha.png");
   mix-blend-mode: normal; }
 
 .background-inset {
@@ -974,8 +974,8 @@
     margin-left: -30px; }
 
 .background-stardust-blurred {
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), url("/static/backgrounds/stardust_blur.png") no-repeat fixed;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/static/backgrounds/stardust_blur.png") no-repeat fixed;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), url("/schemedream/static/backgrounds/stardust_blur.png") no-repeat fixed;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/schemedream/static/backgrounds/stardust_blur.png") no-repeat fixed;
   background-size: cover; }
 
 .background-stardust-solid-dark {
@@ -1755,7 +1755,7 @@ body {
     @extend .background-white-paper;
     @extend .fixed;
     z-index: $z-modal-backdrop;
-    cursor: url("/static/icons/x.svg"), default;
+    cursor: url("/schemedream/static/icons/x.svg"), default;
     transition: opacity $trans-md linear;
     width: 0;
     height: 0;
@@ -2987,7 +2987,7 @@ body {
 
 @font-face {
   font-family: fontawesome;
-  src: url("/static/fonts/fontawesome-webfont.woff") format("woff");
+  src: url("/schemedream/static/fonts/fontawesome-webfont.woff") format("woff");
   font-weight: 400;
   font-style: normal; }
 
