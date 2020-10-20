@@ -1,13 +1,9 @@
 import * as React from 'react';
-import { BrowserRouter, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Routes from '../config/routes';
 import Header from 'client/components/shared/Header';
-import Feedback from 'client/components/shared/Feedback';
 import ErrorHandler from 'client/components/shared/ErrorHandler';
 import Loader from 'client/components/shared/Loader';
-import Auth from 'client/lib/Auth';
-import LocalStorage from 'client/lib/LocalStorage';
-import EventBus from 'eventbusjs';
 
 import '../style/global.scss';
 
@@ -72,9 +68,9 @@ export default class App extends React.Component<any, any> {
 		} */
 	}
 
-	goToSignIn() {
-		this.props.history.push('/signin');
-	}
+	// goToSignIn() {
+	// 	this.props.history.push('/signin');
+	// }
 
 	render() {
 		const self = this;
