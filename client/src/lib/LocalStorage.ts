@@ -20,6 +20,10 @@ export default class LocalStorage {
         window.localStorage.setItem(key, JSON.stringify(value));
     }
 
+    static remove(key: string) {
+        window.localStorage.removeItem(key);
+    }
+
     private static _getClassTypeName<T>(id: string): string {
         return id;
     }

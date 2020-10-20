@@ -96,6 +96,7 @@ let config = {
             template: 'index.template.html',
         }),
             
+        new webpack.SourceMapDevToolPlugin({})
     ],
 
     devServer: {

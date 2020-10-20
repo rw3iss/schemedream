@@ -5,6 +5,8 @@
 #header {
     width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
     flex-wrap: nowrap;
     padding: 0px 2px;
     background: rgb(34,40,46);
@@ -65,9 +67,23 @@ background: linear-gradient(164deg, rgba(34,40,46,1) 0%, rgba(66,66,57,1) 71%, r
         }
     }
 
+    .github {
+        margin: 2px 0 0 15px;
+        opacity: .8;
+        
+        img {
+            max-width: 20px;
+            height: auto;
+        }
+        
+        &:hover {
+            opacity: 1;
+        }
+    }
+    
     $navAnimSpeed: .5s;
     .navigation {
-        display: flex;
+        display: none;
         flex-wrap: nowrap;
         margin: 20px 40px 0px auto;
 

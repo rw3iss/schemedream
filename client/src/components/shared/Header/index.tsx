@@ -58,6 +58,8 @@ export default class Header extends React.Component<any, any> {
 					{ false && <li className={section == '/dashboard' ? 'active' : ''}><Link to="/invite/12387618" replace className="link">Invited</Link></li> }
 				</ul>
 
+                <a className="github" href="https://github.com/rw3iss/schemedream" target="_blank"><img src="/static/img/GitHub-Mark-Light-32px.png"/></a>
+
 			</div>
 		);
 	}

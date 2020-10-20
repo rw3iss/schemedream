@@ -80,6 +80,7 @@ export default class ColorComplements extends React.Component<any, any> {
 
 		return (
 			<div className="color-complements">
+                
                 <div className="controls">
                     <div className="ctrl">
                         <label className="color-count">Qty:</label>
@@ -104,6 +105,7 @@ export default class ColorComplements extends React.Component<any, any> {
                         )
                     })}
                 </div>
+                
     		</div>
 		);
 	}

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import EventBus from 'eventbusjs';
 import ColorPickingArea from 'components/schemes/ColorPickingArea';
 import { Color } from 'lib/models/Colors';
 
@@ -47,7 +46,6 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
             this.selectColor(newColor)
         }
 
-		//this.onSchemeChanged();
 		this.forceUpdate();
 	}
 
@@ -114,7 +112,7 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 
 				<div className="color-set">
 					{ this.props.colorScheme.colors.map((c, i) => {
-						let colorHex = c.getColor();// c.original.getColor();
+						let colorHex = c.getColor();
 						let style = { 'backgroundColor': colorHex };
 						let isSelected = this.state.selectedColors.includes(c);
 						return ( 

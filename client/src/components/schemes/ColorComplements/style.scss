@@ -7,6 +7,8 @@
     .controls {
         @include flex-row();
         @include flex-middle();
+        align-items: center;
+        justify-content: center;
         width: 100%;
         background: rgba(0,0,0,.5);
         padding: 5px;
