@@ -19,7 +19,7 @@ let config = {
     },
 
     output: {
-        publicPath: '/',
+        publicPath: '/schemedream',
         path: BUILD_DIR,
         filename: '[name].[hash].js'
     },
