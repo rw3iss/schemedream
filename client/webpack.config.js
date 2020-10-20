@@ -72,6 +72,12 @@ let config = {
                 test: /\.(png|jpg|gif|svg|webp|ico|woff|woff2|eot|otf|ttf|css)$/,
                 use: [
                 {
+                    loader: 'resolve-url-loader',
+                    options: {
+                        root: "/schemedream"
+                    }
+                },
+                {
                     loader: 'file-loader',
                     options: {}
                 }
@@ -102,8 +108,9 @@ let config = {
     devServer: {
         hot: true,
         contentBase: './src',
-        publicPath: '/',
-        public: 'http://localhost:' + PORT,
+        path: './build',
+        publicPath: '/schemedream',
+        public: 'http://localhost:' + PORT + '/schemedream',
         port: PORT,
         watchContentBase: true
     }

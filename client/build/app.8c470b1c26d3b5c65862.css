@@ -22,20 +22,20 @@
         -ms-flex-align: center;
             align-items: center;
     align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
-    padding: 5px; }
+    padding: 2px 5px; }
     .color-complements .controls .ctrl {
-      margin: 5px; }
+      margin: 2px 5px; }
       .color-complements .controls .ctrl label {
         margin-right: 5px; }
       .color-complements .controls .ctrl input {
-        font-size: 1.5em;
+        font-size: 1.35em;
         max-width: 50px;
-        padding: 0;
+        padding: 2px;
         color: #333; }
   .color-complements .colors {
     width: 100%;
@@ -3199,7 +3199,7 @@ button.toast-close-button {
 
 @font-face {
   font-family: coolvetica;
-  src: url("/static/fonts/coolvetica.ttf") format("truetype");
+  src: url("/schemedream/static/fonts/coolvetica.ttf") format("truetype");
   font-weight: 400;
   font-style: normal; }
 

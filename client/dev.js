@@ -9,7 +9,7 @@ console.log("Starting webpack dev server...");
 // Start dev server for secure site / client:
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
-  public: 'http://localhost:' + PORT,
+  public: config.output.public,
   hot: true,
   historyApiFallback: true,
   watchContentBase: true
