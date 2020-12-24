@@ -1,0 +1,29 @@
+.custom-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    
+    .label {
+        position: absolute;
+        top: 2px;
+        padding: 0 2px 0 7px;
+        color: #aaa;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+    
+    select {
+        position: relative;
+        z-index: 1;
+        padding-top: 10px;
+        border: none;
+        box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+        border-radius: 0;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background: none;
+        height: 100%;
+    }
+        
+}

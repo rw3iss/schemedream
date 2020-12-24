@@ -1,0 +1,46 @@
+@import '../../../style/mixins/layout';
+@import '../../../style/variables';
+
+.color-scheme-designer {
+    display: block;
+    width: 100%;
+    background: rgb(87,84,89);
+    background: linear-gradient(0deg, rgba(87,84,89,1) 0%, rgba(100,96,102,1) 100%);
+
+    > .controls {
+        .button {
+            margin: 5px;
+        }
+    }
+
+    .color-set {
+        @include flex-row();
+
+        .color {
+            display: block;
+            width: 100px;
+            height: 100px;
+
+            &.selected {
+                border: 2px solid $color-blue-main;
+            }
+
+            .info {
+                display: none;
+                margin-left: 2px;
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                .info {
+                    display: block;
+                }
+            }
+        }
+        
+        .add-color {
+            margin-left: 5px;
+        }
+    }
+}

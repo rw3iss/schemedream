@@ -1,0 +1,30 @@
+@import '../mixins/input';
+
+.input-sm {
+    @include _input();
+    font-size: 16px;
+    height: $height-input-sm;
+    padding: $padding-tn;
+}
+
+.input-md {
+    @include _input();
+    font-size: 18px;
+    height: $height-input-md;
+    padding: $padding-tn;
+}
+
+.input-lg {
+    @include _input();
+    font-size: 20px;
+    height: $height-input-lg;
+    padding: $padding-xs $padding-xs/2;
+}
+
+textarea.input-lg {
+    padding: $padding-xs/2 $padding-xs/2;
+}
+
+textarea {
+    line-height: 1.5em;
+}

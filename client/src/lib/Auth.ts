@@ -1,5 +1,5 @@
 // Manages client authentication
-import LocalStorage from 'client/lib/LocalStorage';
+import LocalStorage from 'client/lib/utils/LocalStorage';
 //import AuthApi from 'client/api/AuthApi';
 //import UsersApi from 'client/api/UsersApi';
 import CookieUtils from 'client/lib/utils/CookieUtils';

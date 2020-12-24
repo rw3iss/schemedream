@@ -1,18 +1,26 @@
 @import '../../../style/mixins/layout';
 @import '../../../style/variables';
 
-.color-scheme-designer {
+#scheme-designer {
     display: block;
     width: 100%;
-    background: rgb(87,84,89);
-    background: linear-gradient(0deg, rgba(87,84,89,1) 0%, rgba(100,96,102,1) 100%);
 
-    > .controls {
-        .button {
-            margin: 5px;
+    .add-color {
+        @include flex-center-both;
+        width: 80%;
+        margin: 40px auto 0 auto;
+        padding: 20px;
+        border: 1px solid #555;
+        border-radius: 10px;
+        color: White;
+        background: none;
+        
+        &:hover {
+            background: #111;
+            cursor: pointer;
         }
     }
-
+    
     .color-set {
         @include flex-row();
 
@@ -39,8 +47,5 @@
             }
         }
         
-        .add-color {
-            margin-left: 5px;
-        }
     }
 }

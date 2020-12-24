@@ -1,10 +1,9 @@
 import * as React from 'react';
 import EventBus from 'eventbusjs';
-import { Color } from 'lib/models/Colors';
+import Color from 'lib/models/Color';
 
 import './style';
 
-let mounted = true;
 export default class ColorComplements extends React.Component<any, any> {
 
 	constructor(props: any) {
@@ -93,7 +92,7 @@ export default class ColorComplements extends React.Component<any, any> {
                 </div>
 
                 <div className="colors">
-                    {this.state.colors.map((c,i) => {
+                    { this.state.colors.map((c,i) => {
                         let style = { "backgroundColor": c.getColor() };
                         return (
                             <div className="color" style={style} key={i}>
@@ -103,7 +102,7 @@ export default class ColorComplements extends React.Component<any, any> {
                                 </div>
                             </div>
                         )
-                    })}
+                    }) }
                 </div>
                 
     		</div>

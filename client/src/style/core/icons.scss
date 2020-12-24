@@ -1,3 +1,28 @@
+@import '../../style/variables';
+@import '../../style/mixins/layout';
+
+$defaultIconSize: 30px;
+
+.icon {
+    max-width: $defaultIconSize;
+    @include flex-center-both();
+    padding: 3px;
+    
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    &.clickable {
+        opacity: .8;
+        cursor: pointer;
+        
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
 @font-face {
     font-family: fontawesome;
     src: url("#{$static-image-url}/fonts/fontawesome-webfont.woff") format("woff");

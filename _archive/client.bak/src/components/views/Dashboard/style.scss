@@ -1,0 +1,33 @@
+@import '../../../style/variables';
+@import '../../../style/mixins/layout';
+
+#view-dashboard {
+    padding: 50px 0 0;
+    margin: 0 auto; 
+    position: relative;
+
+    .header {
+        @include flex-row();
+        @include flex-middle();
+    }
+    
+    .actions {
+        margin: 5px 0;
+        display: flex;
+        align-items: flex-end;
+
+        .button {
+            margin: 0 5px;
+        }
+        
+        .load-project {
+            display: flex;
+            align-items: center;
+            margin: 0 5px;
+            
+            .label {
+                margin-right: 5px;
+            }
+        }
+    }
+}

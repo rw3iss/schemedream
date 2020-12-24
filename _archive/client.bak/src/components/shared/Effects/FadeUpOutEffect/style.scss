@@ -1,0 +1,13 @@
+.fade-up-out-effect {
+    height: auto;
+    opacity: 1;
+    //max-height: 100vh;
+    transition: max-height .5s ease-in-out, opacity .5s ease-in-out;
+    overflow: hidden;
+
+    &.loaded {
+        opacity: 0;
+        max-height: 0 !important;
+        transition: max-height .5s ease-in-out, opacity .5s ease-in-out;
+    }
+}

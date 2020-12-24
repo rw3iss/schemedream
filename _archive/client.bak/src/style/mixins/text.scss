@@ -1,0 +1,236 @@
+
+@import '../variables';
+@import './layout';
+
+@mixin text-font-alt() {
+    font-family: $font-family-alt;
+}
+
+@mixin text-light() {
+    font-weight: 300;
+}
+
+@mixin text-thin-italic() {
+    font-weight: 100;
+    font-style: italic;
+}
+
+@mixin text-green() {
+    color: $color-green;
+}
+
+@mixin text-error() {
+    color: $color-error-red;
+}
+
+@mixin text-white() {
+    color: $color-white;
+}
+
+@mixin text-thin() {
+    font-weight: 100;
+}
+
+@mixin text-weight-normal() {
+    font-weight: 400;
+}
+
+@mixin text-bold() {
+    font-weight: 700;
+}
+
+@mixin text-bold-italic() {
+    font-weight: 700;
+    font-style: italic;
+}
+
+@mixin text-weight-normal() {
+    font-weight: 400;
+}
+
+@mixin text-popover() {
+    color: $color-popover-foreground;
+}
+
+@mixin text-center() {
+    width: 100%;
+    text-align: center;
+}
+
+@mixin text-left() {
+    text-align: left;
+}
+
+@mixin pointer() {
+    cursor: pointer;
+}
+
+@mixin paragraph-sm() {
+    font-size: 13px;
+}
+
+@mixin paragraph-md() {
+    font-size: 16px;
+}
+
+@mixin paragraph-lg() {
+    font-size: 30px;
+}
+
+@mixin no-pointer() {
+    cursor: default;
+}
+
+@mixin card-paragraph() {
+    text-align: left;
+}
+
+@mixin underline() {
+    text-decoration: underline;
+}
+
+@mixin text-black() {
+    color: $color-black;
+}
+
+@mixin text-dark-blue-1() {
+    color: $color-dark-blue-1;
+}
+
+@mixin text-dark-blue-2 (){
+    color: $color-dark-blue-2;
+}
+
+@mixin text-dark-blue-3() {
+    color: $color-dark-blue-3;
+}
+
+@mixin text-light-blue-1() {
+    color: $color-light-blue-1;
+}
+
+@mixin text-light-blue-2() {
+    color: $color-light-blue-2;
+}
+
+@mixin text-blue-1() {
+    color: $color-blue-1;
+}
+
+@mixin text-blue-2() {
+    color: $color-blue-2;
+}
+
+@mixin text-blue-3() {
+    color: $color-blue-3;
+}
+
+@mixin text-red() {
+    color: $color-red;
+}
+
+@mixin text-grey-1() {
+    color: $color-grey-1;
+}
+
+@mixin text-grey-2() {
+    color: $color-grey-2;
+}
+
+@mixin text-grey-3() {
+    color: $color-grey-3;
+}
+
+@mixin text-grey-4() {
+    color: $color-grey-4;
+}
+
+@mixin text-grey-5() {
+    color: $color-grey-5;
+}
+
+@mixin text-grey-6() {
+    color: $color-grey-6;
+}
+
+@mixin text-grey-12() {
+    color: $color-grey-12;
+}
+
+@mixin text-gold() {
+    color: $color-gold;
+}
+
+@mixin text-platinum() {
+    color: $color-platinum;
+}
+
+@mixin _h() {
+    @include text-center();
+    cursor: inherit;
+    display: block;
+
+    &.half {
+        @include half();
+        @include text-left();
+    }
+
+    &.two-thirds {
+        @include two-thirds();
+        @include text-left();
+    }
+}
+
+@mixin h1() {
+    @include _h();
+    @include text-light();
+    font-size: 42px;
+    line-height: 54px;
+}
+
+@mixin h2() {
+    @include _h();
+    @include text-light();
+    font-size: 38px;
+    line-height: 40px;
+}
+
+@mixin h3() {
+    @include _h();
+    @include text-light();
+    font-size: 34px;
+}
+
+@mixin h4() {
+    @include _h();
+    font-size: 30px;
+}
+
+@mixin h6() {
+    @include _h();
+    font-size: 22px;
+    line-height: 33px;
+}
+
+@mixin h7() {
+    @include _h();
+    @include text-bold();
+    font-size: 20px;
+}
+
+@mixin h8() {
+    @include _h();
+    @include text-light();
+    font-size: 20px;
+}
+
+@mixin h9() {
+    @include _h();
+    font-size: 16px;
+}
+
+@mixin h10() {
+    @include _h();
+    @include text-thin();
+    font-size: 11px;
+}

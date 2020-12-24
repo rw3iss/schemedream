@@ -1,32 +1,37 @@
 import * as React from 'react';
-import ColorPickingArea from 'components/schemes/ColorPickingArea';
-import { Color } from 'lib/models/Colors';
+import ColorEdit from 'client/components/schemes/ColorEdit';
+import Color from 'lib/models/Color';
 
 import './style';
-import ColorScheme from 'client/lib/models/ColorScheme';
+import Scheme from 'client/lib/models/Scheme';
 
 interface IProps {
-	colorScheme: ColorScheme;
-	onDeleteScheme: (ColorScheme) => void;
+    scheme: Scheme;
+    isEditable: boolean;
+    onAddColor: (color: Color) => void;
+    onDeleteColor: (color: Color) => void;
 }
 
-export default class ColorSchemeDesigner extends React.Component<IProps, any> {
+/* Responsible for loading and displaying a Scheme (public or private) */
+
+export default class SchemeDesigner extends React.Component<IProps, any> {
 
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			colorScheme: this.props.colorScheme,
+            isEditable: this.props.isEditable,
 			selectedColors: [],
 			hasChanges: false
 		}
 	}
 
 	componentDidMount() {
-		//this.loadScheme(this.props.colorScheme);
+        // todo: get selected colors?
+		//this.loadScheme(this.props.scheme);
 	}
 
     componentWillReceiveProps(nextProps) {
-		if (nextProps.colorScheme != this.props.colorScheme) {
+		if (nextProps.scheme != this.props.scheme) {
 			this.clearState();
 		}
 	}
@@ -37,16 +42,16 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 		})
 	}
 
-	addNewColor = (color?, select = false) => {
-		let newColor = new Color(color);
-		newColor.original = new Color(newColor);
-        this.props.colorScheme.addColor(newColor);
+	addNewColor = (_color?, select = false) => {
+		let color = new Color(_color);
+        color.original = new Color(color);
 
         if (select) {
-            this.selectColor(newColor)
+            this.selectColor(color);
         }
 
-		this.forceUpdate();
+        this.props.onAddColor(color);
+		//this.forceUpdate();
 	}
 
 	changeColor = (color) => {
@@ -68,7 +73,7 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 	}
 
 	deleteColor = (c) => {
-		this.props.colorScheme.deleteColor(c);
+		this.props.scheme.deleteColor(c);
 		this.setState({
 			selectedColors: this.state.selectedColors.filter(_c => {
 				return _c != c
@@ -79,14 +84,8 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 	selectColor = (color) => {
 		const self = this;
 		
-		let alreadySelected = false;
-		self.state.selectedColors.forEach((c) => {
-			if (c == color)
-				alreadySelected = true;
-		});
-
+		let alreadySelected = this.state.selectedColors.find(c => c === color) != undefined;
 		if (!alreadySelected) {
-			// add to selected
 			self.setState({
 				selectedColors: [...self.state.selectedColors, color]
 			});
@@ -101,17 +100,15 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 	}
 
 	render() {
-		let self = this;
+        let self = this;
+        console.log("scheme designer...", this.props.scheme)
 
-		return this.props.colorScheme ?
-			(<div className={ 'container view color-scheme-designer' }>
+        return this.props.scheme ?
+        
+			(<div id="scheme-designer" className={ 'container view' }>
 
-				<div className="controls">
-					<div className="button button-red-sm button-inline" onClick={() => self.props.onDeleteScheme(self.props.colorScheme)}>X Delete Scheme</div>
-				</div>
-
-				<div className="color-set">
-					{ this.props.colorScheme.colors.map((c, i) => {
+				{ false && <div className="color-set">
+					{ this.props.scheme.colors.map((c, i) => {
 						let colorHex = c.getColor();
 						let style = { 'backgroundColor': colorHex };
 						let isSelected = this.state.selectedColors.includes(c);
@@ -121,19 +118,18 @@ export default class ColorSchemeDesigner extends React.Component<IProps, any> {
 							</div>
 						)
 					})}
-            
-                    { <div className="button button-blue-sm button-inline add-color" onClick={() => self.addNewColor(null, true)}>+ Add Color</div> }
-
-				</div>
+                </div> 
+                }
 				
-				{ this.state.selectedColors.map((c, i) => {
-					return ( <ColorPickingArea key={i} color={c} 
+				{ this.props.scheme.colors.map((c, i) => {
+					return ( <ColorEdit key={i} color={c} 
 						onColorChanged={(c) => self.changeColor(c)} 
 						onColorSaved={(c) => self.saveColor(c)}
 						onAddNewColor={(c) => self.addNewColor(c)}
 						onDeleteColor={(c) => self.deleteColor(c)} /> );
 				})}
-                    
+
+                { <div className="add-color" onClick={() => self.addNewColor(null, true)}>+ Add Color</div> }
 
 			</div>)
 			: null;

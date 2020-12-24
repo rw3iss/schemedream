@@ -1,6 +1,8 @@
 @import '../../../style/variables';
 @import '../../../style/mixins/layout';
 
+$actionBorder: 1px solid #444;
+
 #view-dashboard {
     padding: 50px 0 0;
     margin: 0 auto; 
@@ -11,23 +13,51 @@
         @include flex-middle();
     }
     
-    .actions {
-        margin: 5px 0;
-        display: flex;
-        align-items: flex-end;
+}
 
-        .button {
-            margin: 0 5px;
-        }
+#header-portal {
+    @include flex-row();
+    flex: 1;
+}
+    
+// This content is injected dynamically into the site Header through a portal:
+#dashboard-header {
+    @include flex-row();
+    margin-left: 20px;
+    justify-self: flex-end;
+    align-items: center;
+    margin: 0 0 0 auto;
+         
+    .actions.left {
+        @include flex-row();
+        align-items: center;
+        margin-right: 40px;
+        border-right: $actionBorder;
         
-        .load-project {
-            display: flex;
-            align-items: center;
-            margin: 0 5px;
+        .action {
+            border-left: $actionBorder;
             
-            .label {
-                margin-right: 5px;
+            select {
+                min-width: 140px;
             }
         }
+        
+        .swatch-select {
+            margin: 0 40px;
+        }
     }
+    
+    .actions.right {
+        @include flex-row();
+        justify-self: flex-end;
+        margin: 0 0 0 auto;
+        
+        .action {
+            margin: 0 4px;
+        }
+    }
+    
+    .color-swatches-dropdown {
+    }
+    
 }

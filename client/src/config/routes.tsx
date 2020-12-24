@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import createHashHistory from 'history/createHashHistory';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { createHashHistory } from 'history';
 import Auth from 'client/lib/Auth';
 import Dashboard from 'client/components/views/Dashboard';
 //import SecureRoute from 'components/shared/SecureRoute';
 
-const history = createHashHistory();
+//const history = createHashHistory();
 /* 
 const SecureRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => {	
@@ -21,14 +21,21 @@ const SecureRoute = ({ component: Component, ...rest }) => (
   )}}/>
 ) */
 
-// import libs
-const Routes = () => (
-		<Switch>
+export default function(props) {
+    return (
+        <Routes>
+            <Route path='/' element={<Dashboard {...props} />} />
+        </Routes>
+    );
+}
 
-			<Route path='/' component={Dashboard} />
-			<Route path='/dashboard' component={Dashboard} />
+// const routes = (props) => (
+//         <Routes>
 
-		</Switch>
-)
+//             <Route path='/' {...props}><Dashboard/></Route>
+//             <Route path='/dashboard' {...props}>Dashboard</Route>
 
-export default Routes;
+//         </Routes>
+// )
+
+// export default routes;

@@ -1,0 +1,46 @@
+@import '../../../style/variables';
+
+#error-handler {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: $color-error-red;
+    color: white;
+    text-align: center;
+    height: auto;
+    max-height: 20vh;
+    overflow-y: auto;
+    transition: max-height .5s ease-in-out;
+
+    .hidden {
+        max-height: 0;
+        transition: max-height .5s ease-in-out;
+    }
+
+    .errors {
+        width: 100%;
+        
+        .error {
+            display: block;
+            width: 100%;
+            text-align: center;
+            max-height: 0;
+            overflow-y: auto;
+            transition: max-height .5s ease-in-out;
+
+            .text {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border-top: 1px solid rgba(255,255,255,.5);
+            }
+
+            &.visible {
+                max-height: 40px;
+                transition: max-height .5s ease-in-out;
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+@import '../../../style/variables';
+
+$navHeight: 100;
+$animTime: .25s;
+
+.auto-hide-header {
+	height: auto;
+	display: block;
+    position: absolute;
+    z-index: 99;
+	top: 0;
+    left: 0;
+    right: 0;
+    transition: all $animTime ease;
+    
+	&:hover {
+		opacity: 1;
+	}
+
+	&.hide {
+		transform: translate(0, -$navHeight - 10px);
+	}
+}
+
+@media all and (max-width: 767px) {
+	.auto-hide-header {
+		width: 100%;
+		border-radius: 0;
+	}
+}

@@ -1,0 +1,24 @@
+@import '../../../../style/mixins/layout';
+
+.stacked-pane-container {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    position: relative;
+    @include flex-col();
+
+    // todo: move tabbed to different component
+
+   /*  .tabbed-pane-header {
+        @include flex-row();
+
+        .tab {
+            flex: 1;
+        }
+    }
+
+    .tabbed-views {
+        @include flex-col();
+    }
+ */
+}

@@ -4,7 +4,7 @@ $color-blue-main: #34baff; //#3ecbd0;
 $color-orange-main: #e6b333;//#f69a41; //#c1982f;
 $color-orange-lighter-main: lighten($color-orange-main, 15%);
 
-$default-radius: 10px;
+$default-radius: 0px;
 
 /* Colors */
 $color-white-paper: rgba(255, 255, 255, 0.75);
@@ -112,7 +112,7 @@ $color-outer-space: #454955;
 $color-platinum: #e0e0e0;
 
 /* Font */
-$font-family: "coolvetica", "Roboto Slab", serif;
+$font-family: "obvia", "coolvetica", "Roboto Slab", serif;
 $font-family-alt: "coolvetica", "Roboto", sans-serif;
 $font-family-icon: "FontAwesome";
 $paragraph-md: 16px;
@@ -143,7 +143,7 @@ $color-button-blue: $color-blue-1;
 $color-button-red: $color-error-red;
 $color-button-green: $color-green-1;
 $color-button-orange: $color-orange-main;
-$button-border-radius: 3px;
+$button-border-radius: 0px;
 
 /* Inputs */
 $height-input-sm: 25px;
@@ -173,8 +173,8 @@ $color-link-default: $color-blue-main;
 $color-link-default-hover: lighten($color-blue-main, 10%);
 
 /* $static-image-url: "https://s3-us-west-2.amazonaws.com/www.mccoymed.com/images"; */
-$static-image-url: "/schemedream/static";
-$live-site-prefix: "/schemedream";
+$static-image-url: "/";//schemedream/static";
+$live-site-prefix: "/";//schemedream";
 
 /* altitude */
 $z-default: 1;

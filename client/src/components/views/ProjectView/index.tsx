@@ -12,10 +12,11 @@ export default class ProjectView extends React.Component<IProps, any> {
 
 	constructor(props) {
         super(props);
+        console.log("project view")
     }
 
     onAddScheme() {
-        this.props.project.createNewColorScheme();
+        this.props.project.newColorScheme();
         this.forceUpdate();
     }
     
@@ -31,17 +32,14 @@ export default class ProjectView extends React.Component<IProps, any> {
         return this.props.project ? 
             (<div className="project">
 
-                <div className="controls">
-					<div className="button button-green-sm button-inline" onClick={() => self.onAddScheme()}>Add New Scheme</div>
-                </div>
-
-                { this.props.project.colorSchemes.map((cs, i) => {
+                { this.props.project.schemes.map((cs, i) => {
                     return (
                         <SchemeDesigner key={i} 
-                            colorScheme={cs} 
+                            scheme={cs} 
                             onDeleteScheme={cs => self.onDeleteScheme(cs)}/>
                     )
                 })}
+                
             </div>)
             : null;
 	}

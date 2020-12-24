@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import Auth from 'client/lib/Auth';
-import EventBus from 'eventbusjs';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import AutoHideHeader from '../AutoHideHeader';
+import Icon from '../Icon';
 
 import './style';
 
@@ -9,11 +10,11 @@ export default class Header extends React.Component<any, any> {
 
 	constructor(props) {
 		super(props);
-		const self = this;
 
 		this.state = {
+            autoHide: true,
             githubStars: '-'
-		}
+        }
 	}
 
 	componentDidMount() {
@@ -25,16 +26,21 @@ export default class Header extends React.Component<any, any> {
         fetch('https://api.github.com/repos/rw3iss/schemedream')
         .then(r => r.json())
         .then(r => {
-            console.log("github stars", )
             self.setState({
                 githubStars: (r as any).stargazers_count
             })
         });
     }
 
+    togglePinHeader = () => {
+        this.setState({
+            autoHide: !this.state.autoHide
+        });
+    }
+
 	render() {
 		const self = this;
-		const page = this.props.location.pathname;
+		const page = '';//this.props.location.pathname;
 		let section = page;
 
 		const sectionIdx = page.indexOf('/', 1);
@@ -44,22 +50,34 @@ export default class Header extends React.Component<any, any> {
 
 		return (
 			<div id="header">
+
+                <AutoHideHeader autoHide={this.state.autoHide} container={document.getElementById('root')} hideDelay={3000}>
 				
-				<div className="logo">
-					<Link to="/" replace className="link">
-						<div className="logo-text"><span className="scheme">Scheme</span><span className="dream">Dream</span></div>
-					</Link>
-					<span className="beta">(alpha, by <a href="http://www.ryanweiss.net" target="_blank">Ryan Weiss</a>)</span>
-				</div>
+                    <div className="logo">
+                        <Link to="/" replace className="link">
+                            <div className="logo-text"><span className="scheme">Scheme</span><span className="dream">Dream</span></div>
+                        </Link>
+                        <span className="beta">beta</span>
+                    </div>
 
-				<ul className="navigation">
-					{ false && <li className={section == '/dashboard' ? 'active' : ''}><Link to="/invite/12387618" replace className="link">Invited</Link></li> }
-				</ul>
+                    <a className="github" href="https://github.com/rw3iss/schemedream" target="_blank">
+                        <img src="/static/img/GitHub-Mark-Light-32px.png"/>
+                        <span className="stars">{this.state.githubStars} ⭐</span>
+                    </a>
 
-                <a className="github" href="https://github.com/rw3iss/schemedream" target="_blank">
-                    <img src="/schemedream/static/img/GitHub-Mark-Light-32px.png"/>
-                    <span className="stars">{this.state.githubStars} ⭐</span>
-                </a>
+                    &nbsp;&nbsp;
+                    <div className="info">(i)</div>
+                    &nbsp;&nbsp;
+
+                    { false && <a href="#" className="donate">Donate</a> }
+
+                    <div id="header-portal">{ /* dynamic content from other components will go here */ }</div>
+
+                    <div className="action pin" onClick={this.togglePinHeader}>
+                        <Icon src={ this.state.autoHide ? "/static/img/icons/pin.svg" : "/static/img/icons/pin_toggle.svg" } clickable={true} />
+                    </div>
+
+                </AutoHideHeader>
 
 			</div>
 		);

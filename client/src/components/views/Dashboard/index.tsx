@@ -1,207 +1,289 @@
 import * as React from 'react';
-import LocalStorage from 'lib/LocalStorage';
+import LocalStorage from 'client/lib/utils/LocalStorage';
 import Project from 'lib/models/Project';
-import ProjectView from 'components/views/ProjectView';
+import Scheme from 'lib/models/Scheme';
+import Color from 'lib/models/Color';
+import HeaderPortal from 'components/shared/Header/HeaderPortal';
 import { notify } from 'lib/utils/Notify';
+import CustomDropdown from 'components/shared/controls/CustomDropdown';
+import SchemeDesigner from 'components/schemes/SchemeDesigner';
+import SwatchSelect from './SwatchSelect';
+import Icon from 'components/shared/Icon';
+import Keys from 'lib/Keys';
+import SD from 'lib/api/SchemeDream';
 
 import './style';
 
-export default class Dashboard extends React.Component<any, any> {
+interface IState {
+    projects: Project[];
+    project: Project | undefined;
+    scheme: Scheme | undefined;
+    isProjectSaved: boolean;
+}
+
+export default class Dashboard extends React.Component<any, IState> {
 
 	constructor(props: any) {
 		super(props);
-        const self = this;
-        
 		this.state = { 
             projects: [],
             project: undefined,
-            hasPreviousProjects: false,
-            isProjectSaved: false
+            scheme: undefined,
+            isProjectSaved: true
 		}
-
-		// Listen for app-wide data updated events for this view
-		// Todo: should we pull state from props, global store
-		//EventBus.addEventListener("APP_USER_DATA_UPDATED", (d) => self.onAppUserDataUpdated(d));
 	}
 
 	componentDidMount() {
-        this.setState({
-            hasPreviousProjects: false,
-            projects: LocalStorage.get('projects') || []
-        })
-
-        this.loadPreviousProject();
+        this.loadProjects();
+        this.loadRecentProject();
 	}
 
-    loadProject(projectName) {
-        // unset project if user selects none
-        if (projectName == '-') {
-            //LocalStorage.set('last-project', null);
-            return this.setState({
-                project: undefined
-            })
-        }
-
-        let project = LocalStorage.get('project-' + projectName);
-
-        if (!project) {
-            return alert("Project not found: " + projectName);
-        }
-
-		let p = new Project(projectName);
-        p.load(project);
-
-        LocalStorage.set('last-project', projectName);
-
-        this.setState({
-            project: p,
-            isProjectSaved: true
-		});
+    loadProjects() {
+        let p = SD.projects.list();
+        this.setState({ projects: SD.projects.list() })
     }
 
+	loadRecentProject() {
+        let project = SD.projects.mostRecent();
+        if (project) {
+            this.loadProject(project)
+        }
+	}
+ 
+    // Load given project and it's most recent (or first) scheme.
+    loadProject(project: Project | undefined) {
+        if (!project) {
+            return notify("Error loading project.");
+        }
+
+        this.setState({ 
+            project, 
+            scheme: project.getRecentScheme()
+        });
+
+        LocalStorage.set(Keys.RECENT_PROJECT, project.uuid);
+        notify("Recent project loaded.");
+        console.log("scheme loaded", project.getRecentScheme());
+    }
+
+    // Start a new project with an initial empty scheme.
 	newProject = () => {
-		let project = new Project('Untitled');
+        let p = SD.projects.create();
+        let s = SD.schemes.create();
+        p.addScheme(s);
+        SD.projects.save(p);
+
 		this.setState({
-            project: project,
-            //projects: ['Untitled', ...this.state.projects],
-            hasPreviousProjects: true
+            project: p,
+            scheme: p.getRecentScheme(),
+            projects: SD.projects.list()
         })
 	}
 
 	saveProject = () => {
-        let p = this.state.project;
-        let name = '';
-        
-        // if aready saved, just resave
-        if (p.name != 'Untitled') {
-            name = p.name;
-            LocalStorage.set('project-' + name, p);
-        } else {
-            let name = prompt("Enter a name for the project:");
-            if (name == null) {
-                return;
-            }
-
-            p.name = name;
-            LocalStorage.set('project-' + name, this.state.project);
-            LocalStorage.set('last-project', name);
-
-            let projects = LocalStorage.get('projects') || [];
-
-            if (!projects.includes(name)) {
-                projects.push(name);
-                LocalStorage.set('projects', projects);
-            }
-
-            this.setState({
-                hasPreviousProjects: true,
-                projects: projects
-            })
-        }
-        
-		notify("Project " + name + " saved.", 'success', 2000);
+        SD.projects.save(this.state.project!);
+		notify("Project " + this.state.project!.name + " saved.", 'success', 2000);
     }
     
     cloneProject = () => {
-        let p = this.state.project;
-        let newProject = new Project('Untitled');
-        newProject.load(p);
-        this.setState({
-            project: newProject
+        let project = SD.projects.clone(this.state.project!);
+        this.setState({ 
+            project,
+            projects: SD.projects.list()
         });
     }
 
     deleteProject = () => {
         const self = this;
-        if (confirm("Are you sure you want to delete this project? This can't be undone.")) {
-            let name = this.state.project.name;
-            let idx = this.state.projects.findIndex((_name) => _name === name);
-            this.state.projects.splice(idx,1);
-
-            LocalStorage.remove(name);
-            LocalStorage.set('projects', this.state.projects);
-            LocalStorage.remove('last-project');
+        if (confirm("Are you sure you want to delete this project? It can't be undone.")) {
+            SD.projects.delete(this.state.project!);
+            LocalStorage.remove(Keys.RECENT_PROJECT);
             this.setState({
                 project: undefined,
-                projects: this.state.projects,
-            }, () => {
-                self.forceUpdate();
-            })
+                scheme: undefined,
+                projects: SD.projects.list()
+            });
         }
-    }
-
-	loadPreviousProject = () => {
-        let projectName = LocalStorage.get('last-project');
-        if (projectName) {
-            this.loadProject(projectName);
-            this.setState({
-                hasPreviousProjects: true
-            })
-        }
-	}
-
-    getAllProjects() {
-        let projects = LocalStorage.get('projects');
-        return projects;
     }
     
     onChangeProject = (e) => {
         if (this.state.project != undefined) {
-            if (!confirm("Are you sure you want to leave the page? You will lose any unsaved changes,")) {
+            if (!confirm("Are you sure you want to change to another project, and lose unsaved changes?")) {
                 return;
             }
         }
-           
-        this.loadProject(e.target.value);
+
+        let p = SD.projects.get(e.target.value);
+        this.loadProject(p);
     }
 
-    importProject = () => {
+    onChangeScheme = (e) => {
+        if (this.state.project != undefined) {
+            if (!confirm("Are you sure you want to change the scheme, and lose unsaved changes?")) {
+                return;
+            }
+        }
+
+        let s = this.state.project!.getScheme(e.target.value);
+        console.log("change scheme", e.target.value, s);
+
+        this.loadScheme(s!);
+    }
+
+    newScheme() {
+        let s = SD.schemes.create();
+        console.log("new scheme", this.state.project, s);
+        this.state.project!.addScheme(s);
+        SD.projects.save(this.state.project!);
+        this.loadScheme(s);
+    }
+
+    // Todo: load from external project (ie. public schemes)
+    loadScheme(s: Scheme) {
+        console.log("loadScheme", s);
+        this.state.project!.recentSchemeId = s.uuid;
+        SD.projects.save(this.state.project!); // todo: ?
+        this.setState({
+            scheme: s
+        });
+    }
+
+    cloneScheme = () => {
+        // SD.schemes.clone(this.state.project.currentScheme);
+    }
+
+    deleteScheme = () => {
+        if (confirm("Are you sure you want to delete this scheme? It can't be undone.")) {
+            console.log("delete scheme");
+            this.state.project!.deleteScheme(this.state.scheme);
+            SD.projects.save(this.state.project!);
+            this.setState({
+                scheme: this.state.project!.getRecentScheme()
+            });
+        }
+    }
+
+    onColorSelected = () => {
+    }    
+    
+    // When a color is added from toolbar and designer, save the scheme and project.
+    onColorAdded = (color?: Color) => {
+        console.log("color added", color, this.state.scheme);
+        this.state.scheme!.addColor(color);
+        this.state.project!.saveScheme(this.state.scheme!);
+        SD.projects.save(this.state.project!);
+        this.forceUpdate();
+    }
+    
+    onColorDeleted = () => {
+    }
+
+    onShowAllColors = () => {
+    }
+
+    onHideAllColors = () => {
     }
 
 	render() {
-		let self = this;
+        let self = this;
+        console.log("schemes", this.state.project)
 
 		return (
-			<div className={ 'container view' } id="view-dashboard">
-				<div className="actions">
+			<div className={ 'container view' } id="view-dashboard">    
+			
+                { /* This header content gets injected into the site Header portal dynamically */ }
+                <HeaderPortal>
+                    
+                    <div id="dashboard-header">
 
-                    { this.state.projects.length > 0 && 
-                        <div className="load-project">
-                            <span className="label">Project:</span>
-                            <select id="selected-project" className="input-sm" onChange={this.onChangeProject} 
-                                value={this.state.project != undefined ? this.state.project.name : "-"}>
-                                <option value="-" key="-">--</option>
-                                { this.state.projects.map(p => {
-                                    return (<option value={p} key={p}>{p}</option>);
-                                    })
-                                }
-                            </select>
+                        <div className="actions left">
+
+                            { this.state.projects.length > 0 &&
+                                <div className="action select-project">
+                                    <CustomDropdown label="Project:" items={this.state.projects
+                                        .map(p => { return { label: p.name || 'Untitled', value: p.uuid } })} 
+                                        onChange={this.onChangeProject} />
+                                </div> 
+                            }
+
+                            <div className="action create" onClick={self.newProject}>
+                                <Icon src="/static/img/icons/add.svg" clickable={true} />
+                            </div>
+
+                            { this.state.project && 
+                                <React.Fragment>
+
+                                    <div className="action clone" onClick={() => self.cloneProject()}>
+                                        <Icon src="/static/img/icons/clone.svg" clickable={true} />
+                                    </div>
+
+                                    <div className="action trash" onClick={() => self.deleteProject()}>
+                                        <Icon src="/static/img/icons/trash.svg" clickable={true} />
+                                    </div>
+
+                                    <div className="action select-scheme">
+                                        <CustomDropdown label="Scheme:" items={this.state.project.schemes
+                                            .map(s => { console.log("S", s); return { label: s.name || 'Untitled', value: s.uuid } })} 
+                                            onChange={this.onChangeScheme} />
+                                    </div> 
+
+                                    <div className="controls">
+                                        <div className="action create-scheme" onClick={() => self.newScheme()}>
+                                            <Icon src="/static/img/icons/add.svg" clickable={true} />
+                                        </div>
+                                    </div>
+
+                                    { this.state.scheme && 
+                                        <React.Fragment>
+                                            <div className="action clone" onClick={() => self.cloneScheme()}>
+                                                <Icon src="/static/img/icons/clone.svg" clickable={true} />
+                                            </div>
+
+                                            <div className="action trash" onClick={() => self.deleteScheme()}>
+                                                <Icon src="/static/img/icons/trash.svg" clickable={true} />
+                                            </div>
+
+                                            <SwatchSelect scheme={this.state.scheme!}
+                                                onColorSelected={this.onColorSelected}
+                                                onAddColor={this.onColorAdded}
+                                                onDeleteColor={this.onColorDeleted}
+                                                onShowAllColors={this.onShowAllColors}
+                                                onHideAllColors={this.onHideAllColors}
+                                            />
+                                        </React.Fragment>
+                                    }
+
+                                </React.Fragment>
+                            }
+
                         </div>
-                    }
 
-					<div className="button button-blue-sm button-inline button-new-project" onClick={() => self.newProject()}>New Project</div>
+                        <div className="actions right">
 
-                    { false && <div className="button button-blue-sm button-inline button-load-project" onClick={() => self.importProject()}>Import Project</div> }
+                            <div className="action">
+                                <Icon src="/static/img/icons/eye.svg" clickable={true} />
+                            </div>
+                            
+                            <div className="action">
+                                <Icon src="/static/img/icons/settings.svg" clickable={true} />
+                            </div>
 
-					{ this.state.hasPreviousProject && false && 
-					 	<div className="button button-blue-sm button-inline button-load-project" onClick={() => self.loadPreviousProject()}>Load Last Saved Project</div>
-					}
+                            <div className="action">
+                                <Icon src="/static/img/icons/user.svg" clickable={true} />
+                            </div>
 
-					{ this.state.project != undefined && 
-						<div className="button button-blue-sm button-inline button-save-project" onClick={() => self.saveProject()}>Save Project</div>
-					}
+                        </div>
 
-					{ this.state.project != undefined && 
-						<div className="button button-blue-sm button-inline button-copy-project" onClick={() => self.cloneProject()}>Clone Project</div>
-					}
+                    </div>
 
-					{ this.state.project != undefined && 
-						<div className="button button-red-sm button-inline button-delete-project" onClick={() => self.deleteProject()}>Delete Project</div>
-					}
-				</div>
-				
-				{ this.state.project &&
-					<ProjectView project={this.state.project} />
+                </HeaderPortal>
+
+				{ this.state.scheme &&
+                    <SchemeDesigner scheme={this.state.scheme} 
+                        onAddColor={this.onColorAdded} 
+                        onDeleteColor={this.onColorAdded} 
+                        isEditable={true}
+                    />
 				}
 
     		</div>

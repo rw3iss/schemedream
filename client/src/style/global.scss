@@ -5,7 +5,7 @@
 @import './mixins/background';
 @import './mixins/animation';
 
-// Singleton/app-wide styles (shouldn't be loaded anywhere else)
+// Core/base styles (shouldn't be loaded anywhere else)
 @import './core/core-layout';
 @import './core/core-forms';
 @import './core/core-background';
@@ -18,14 +18,25 @@
 @import './core/icons';
 @import './core/notifications';
 
+// App-specific styles
+@import './app/index';
+
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400|Roboto:100,100i,300,400,700');
 
 @font-face {
     font-family: coolvetica;
-    src: url("/schemedream/static/fonts/coolvetica.ttf") format("truetype");
+    src: url("/static/fonts/coolvetica.ttf") format("truetype");
     font-weight: 400;
-    font-style: normal; }
+    font-style: normal; 
+}
+
+@font-face {
+    font-family: obvia;
+    src: url("/static/fonts/ObviaWide-Thin.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal; 
+}
 
 #app-container {
     @include flex-col();
@@ -36,8 +47,6 @@
     
     #app-view {
         @include flex-col();
-        background-color: #575459;
-        transition: background-color $trans-ml ease-in-out .2s;
         flex: 1;
         width: 100%;
         position: relative;

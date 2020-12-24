@@ -1,0 +1,11 @@
+.select-block {
+    display: flex;
+    flex-direction: column;
+    
+    .label {
+        padding: 0 2px 0 7px;
+        color: #aaa;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+}

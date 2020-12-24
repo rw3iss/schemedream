@@ -1,0 +1,16 @@
+@import './text';
+
+@mixin _input() {
+    display: inline-block;
+    background-color: white;
+    @include text-light();
+    border-radius: $button-border-radius;
+    border: 1px solid $color-grey-1;
+    padding: $padding-tn;
+    resize: vertical;
+    line-height: 1.5em;
+    
+    ::placeholder {
+        color: $color-grey-2;
+    }
+}

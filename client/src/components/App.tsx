@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
 import Routes from '../config/routes';
 import Header from 'client/components/shared/Header';
 import ErrorHandler from 'client/components/shared/ErrorHandler';
@@ -10,11 +9,10 @@ import '../style/global.scss';
 export default class App extends React.Component<any, any> {
 
 	constructor(props) {
-		super();
+		super(props);
 		
 		// Todo: load current theme from cookie/user
 		this.state = {
-			loaded: false
 		}
 
 		// on App start, ask backend for latest user info:
@@ -44,11 +42,8 @@ export default class App extends React.Component<any, any> {
 		}); */
 	}
 
-	async componentWillMount() {
+	async componentDidMount() {
 		//this.loadLatestUser();
-		this.setState({
-			loaded: true
-		})
 	}
 
 	async loadLatestUser() {
@@ -75,38 +70,21 @@ export default class App extends React.Component<any, any> {
 	render() {
 		const self = this;
 
-		// injects router/location into Header
-		const HeaderComponent = withRouter(props => <Header {...props}/>);
-
 		return (
 			<div>
 				<div id="app-container" className={ 'app-container ' + this.state.theme }>
 
-					{ this.state.loaded &&
-						<div className="app-view" id="app-view">
+                    <div className="app-view" id="app-view">
 
-							<HeaderComponent />
+                        <Header />
 
-							<Routes />
+                        <Routes />
 
-							<div id="view-fade"></div>
+                        <div id="view-fade"></div>
 
-							<ErrorHandler />
+                        <ErrorHandler />
 
-						</div>
-					}
-
-					{ !this.state.loaded &&
-						<div className="app-view unloaded" id="app-view">
-							<HeaderComponent />
-							<div className="view loaded">
-								<div className="loader">
-									<Loader size="xl"/>
-								</div>
-							</div>
-							<ErrorHandler />
-						</div>
-					}
+                    </div>
 					
 				</div>
 			</div>

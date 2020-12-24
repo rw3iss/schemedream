@@ -1,0 +1,197 @@
+/* Main theme colors (experimental) */
+$color-grey-main: #444349; //#696969;
+$color-blue-main: #34baff; //#3ecbd0;
+$color-orange-main: #e6b333;//#f69a41; //#c1982f;
+$color-orange-lighter-main: lighten($color-orange-main, 15%);
+
+$default-radius: 10px;
+
+/* Colors */
+$color-white-paper: rgba(255, 255, 255, 0.75);
+$color-white: #ffffff;
+$color-black: #000000;
+$color-black-1: #0a1115;
+$color-black-2: #0c0c0d;
+$color-black-3: #141415;
+$color-black-4: #1d1d1f;
+$color-black-a15: rgba(0, 0, 0, 0.15);
+$color-box-shadow: rgba(0, 0, 0, 0.28);
+$color-box-shadow-dark: rgba(0, 0, 0, 0.42);
+$color-box-shadow-light: rgba(0, 0, 0, 0.00);
+$color-box-shadow-machine: rgba(0, 0, 0, 0.75);
+$color-box-shadow-machine-light: rgba(0, 0, 0, 0.25);
+$color-box-shadow-input: rgba(0, 0, 0, 0.06);
+$color-neutral: #edf0f2;
+$color-green: #77ad47; //#44a56e;
+$color-blue-1: #2d88ff;
+$color-blue-2: #519cff;
+$color-blue-3: #68a9ff;
+$color-dark-blue-1: #0b428c;
+$color-dark-blue-2: #214f8c;
+$color-dark-blue-3: #335684;
+$color-light-blue-1: #9bd0ff;
+$color-light-blue-2: #bcdfff;
+$color-light-blue-2-dim: rgba(145, 164, 173, 0.4);
+$color-light-blue-2-extra-dim: rgba(145, 164, 173, 0.2);
+$color-red: #a54444;
+$color-gold: #d4af37;
+$color-grey-1: #e0e0e0;
+$color-grey-2: #788388;
+$color-grey-3: #828282;
+$color-grey-4: #bdbdbd;
+$color-grey-5: #4f4f4f;
+$color-grey-6: #f2f2f2;
+$color-grey-7: #fafafa;
+$color-grey-8: #fcfeff;
+$color-grey-9: #f1f3f4;
+$color-grey-10: #c6cfd4;
+$color-grey-11: #4a4a4a;
+$color-grey-12: #454545;
+$color-popover-background: rgba(39, 60, 71, 0.9);
+$color-popover-foreground: rgba(145, 164, 173, 0.8);
+$color-popover-border: rgba(65, 93, 107, 0.7);
+$color-green-1: rgba(#7fb44e,1);
+$color-green-2: rgba(#92cf59,1);
+$color-green-3: rgba(#a9eb6d,1);
+$color-orange-1: rgba(#eeb720,1);
+$color-orange-2: rgba(#faaa32,1);
+$color-orange-3: rgba(#ffbf10,1);
+
+$color-grey-1: rgba(255,255,255, .1);
+$color-grey-1-hover: rgba(255,255,255, .135);
+$color-grey-2: rgba(255,255,255, .2);
+$color-grey-2-hover: rgba(255,255,255, .235);
+$color-grey-3: rgba(255,255,255, .3);
+$color-grey-3-hover: rgba(255,255,255, .335);
+$color-grey-4: rgba(255,255,255, .4);
+$color-grey-4-hover: rgba(255,255,255, .435);
+$color-grey-5: rgba(255,255,255, .5);
+$color-grey-5-hover: rgba(255,255,255, .535);
+$color-grey-6: rgba(255,255,255, .6);
+$color-grey-6-hover: rgba(255,255,255, .635);
+$color-grey-7: rgba(255,255,255, .7);
+$color-grey-7-hover: rgba(255,255,255, .735);
+$color-grey-8: rgba(255,255,255, .8);
+$color-grey-8-hover: rgba(255,255,255, .835);
+$color-grey-9: rgba(255,255,255, .9);
+$color-grey-9-hover: rgba(255,255,255, .935);
+
+$color-black-1: rgba(0,0,0, .1);
+$color-black-1-hover: rgba(0,0,0, .135);
+$color-black-2: rgba(0,0,0, .2);
+$color-black-2-hover: rgba(0,0,0, .235);
+$color-black-3: rgba(0,0,0, .3);
+$color-black-3-hover: rgba(0,0,0, .335);
+$color-black-4: rgba(0,0,0, .4);
+$color-black-4-hover: rgba(0,0,0, .435);
+$color-black-5: rgba(0,0,0, .5);
+$color-black-5-hover: rgba(0,0,0, .535);
+$color-black-6: rgba(0,0,0, .6);
+$color-black-6-hover: rgba(0,0,0, .635);
+$color-black-7: rgba(0,0,0, .7);
+$color-black-7-hover: rgba(0,0,0, .735);
+$color-black-8: rgba(0,0,0, .8);
+$color-black-8-hover: rgba(0,0,0, .835);
+$color-black-9: rgba(0,0,0, .9);
+$color-black-9-hover: rgba(0,0,0, .935);
+
+$color-popover-background: rgba(130, 39, 39, 0.9);
+$color-popover-border: rgba(130, 39, 39, 0.7);
+
+$color-error-background: rgba(55, 33, 33, 0.9);
+$color-error-background-hover: rgba(60, 36, 36, 1);
+$color-error-red: rgba(209, 77, 77, 0.9);//rgba(204, 82, 55, 1);
+
+$color-blue-sapphire: #206888;
+$color-smoky-black: #0d0a0b;
+$color-stardust: #444349;
+$color-stardust-half-dark: #3d3c41;
+$color-stardust-dark: #36353a;
+$color-stardust-dark-hover: lighten(#36353a, 2%);
+$color-outer-space: #454955;
+$color-platinum: #e0e0e0;
+
+/* Font */
+$font-family: "coolvetica", "Roboto Slab", serif;
+$font-family-alt: "coolvetica", "Roboto", sans-serif;
+$font-family-icon: "FontAwesome";
+$paragraph-md: 16px;
+$paragraph-sm: 13px;
+
+/* Layout */
+$page-width-xl: 1440px;
+$content-width-xl: 1280px;
+$page-width-lg: 1279px;
+$content-width-lg: 900px;
+$page-width-md: 899px;
+$content-width-md: 600px;
+$page-width-sm: 599px;
+$content-width-sm: 420px;
+
+/* Padding */
+$padding-xl: 150px;
+$padding-lg: 100px;
+$padding-ml: 50px;
+$padding-md: 20px;
+$padding-sm: 10px;
+$padding-xs: 7px;
+$padding-ts: 5px;
+$padding-tn: 2px;
+
+/* Button */
+$color-button-blue: $color-blue-1;
+$color-button-red: $color-error-red;
+$color-button-green: $color-green-1;
+$color-button-orange: $color-orange-main;
+$button-border-radius: 3px;
+
+/* Inputs */
+$height-input-sm: 25px;
+$height-input-md: 42px;
+$height-input-lg: 50px;
+
+$font-size-input-sm: 14px;
+$font-size-input-md: 16px;
+$font-size-input-lg: 18px;
+
+/* Transition */
+$trans-tn: 0.05s;
+$trans-mn: 0.1s;
+$trans-sh: 0.25s;
+$trans-sm: 0.4s;
+$trans-md: 0.5s;
+$trans-ml: 0.75s;
+$trans-ln: 1s;
+$trans-xl: 1.5s;
+$anim-ty: 0.5s;
+$anim-sh: 1s;
+$anim-md: 2s;
+$anim-ln: 4s;
+
+/* Url */
+$color-link-default: $color-blue-main;
+$color-link-default-hover: lighten($color-blue-main, 10%);
+
+/* $static-image-url: "https://s3-us-west-2.amazonaws.com/www.mccoymed.com/images"; */
+$static-image-url: "/schemedream/static";
+$live-site-prefix: "/schemedream";
+
+/* altitude */
+$z-default: 1;
+$z-avatar: 11;
+$z-menu: 999;
+$z-modal-backdrop: 1000;
+$z-modal-window: 1100;
+
+/* Margins for standard things */
+$button-margin: 5px;
+$input-margin: 5px;
+
+/* Specific animations */
+$modalAnimSpeed: $trans-sh;
+
+/* icons */
+$icon-size-sm: 20px;
+$icon-size-md: 32px;
+$icon-size-lg: 48px;
+$icon-size-xl: 64px;

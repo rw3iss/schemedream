@@ -1,0 +1,63 @@
+.form {
+    .form-row {
+        margin: 0;
+        display: flex;
+        align-items: flex-start;
+
+        .input-wrapper {
+            flex: 1;
+            margin: 5px;
+            position: relative;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &.error {
+                input, select, textarea {
+                    border: 1px solid $color-orange-main;
+                }
+
+                .error-msg {
+                    position: relative;
+                    z-index: 2;
+                    top: -2px;
+                    //height: 28px;
+                    background: $color-orange-main;
+                    color: white;
+                    padding: 5px 10px;
+                    font-size: .8em;
+                    border-bottom-left-radius: $button-border-radius;
+                    border-bottom-right-radius: $button-border-radius;
+                }
+            }
+        }
+    }
+
+    .status {
+        display: block;
+
+        .loading {
+            display: block;
+            margin: 15px 0 5px;
+        }
+
+        .success {
+            width: 100%;
+            text-align: center;
+            color: $color-green;
+            margin: 15px 0 5px;
+        }
+        
+        .error {
+            width: 100%;
+            text-align: center;
+            color: $color-orange-main;
+            margin: 15px 0 5px;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+@import '../../../../style/variables';
+@import '../../../../style/mixins/layout';
+
+$swatchSize: 50px;
+
+.swatch-select {
+    @include flex-row();
+    position: relative;
+    
+    .swatches {
+        @include flex-row();
+        flex-wrap: wrap;
+        align-items: center;
+        
+        .swatch {
+            @include flex-center-both();
+            width: $swatchSize;
+            height: $swatchSize;
+            border: 2px solid #555;
+            overflow: hidden;
+        }
+    }
+    
+    .index {
+        @include flex-row();
+        align-items: center;
+        
+        .left {
+        }
+        
+        .swatches {
+        }
+        
+        .right {
+        }
+        
+        .expand {
+        }
+        
+    }
+    
+    .dropdown-full {
+        @include flex-row();
+        align-items: center;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: black;
+        
+        &.expanded {
+            display: flex;
+        }
+        
+        .left {
+        }
+        
+        .swatches {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .right {
+        }
+        
+        .close {
+        }
+        
+    }
+        
+}

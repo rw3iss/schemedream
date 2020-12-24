@@ -1,0 +1,188 @@
+@import '../mixins/text';
+@import '../mixins/layout';
+
+.instructions {
+    color: $color-grey-4;
+}
+
+.text-green {
+    color: $color-green;
+}
+
+.text-black {
+    color: $color-black;
+}
+
+.text-dark-blue-1 {
+    color: $color-dark-blue-1;
+}
+
+.text-dark-blue-2 {
+    color: $color-dark-blue-2;
+}
+
+.text-dark-blue-3 {
+    color: $color-dark-blue-3;
+}
+
+.text-light-blue-1 {
+    color: $color-light-blue-1;
+}
+
+.text-light-blue-2 {
+    color: $color-light-blue-2;
+}
+
+.text-blue-1 {
+    color: $color-blue-1;
+}
+
+.text-blue-2 {
+    color: $color-blue-2;
+}
+
+.text-blue-3 {
+    color: $color-blue-3;
+}
+
+.text-red {
+    color: $color-red;
+}
+
+.text-grey-1 {
+    color: $color-grey-1;
+}
+
+.text-grey-2 {
+    color: $color-grey-2;
+}
+
+.text-grey-3 {
+    color: $color-grey-3;
+}
+
+.text-grey-5 {
+    color: $color-grey-5;
+}
+
+.text-grey-6 {
+    color: $color-grey-6;
+}
+
+.text-grey-12 {
+    color: $color-grey-12;
+}
+
+.text-gold {
+    color: $color-gold;
+}
+
+.text-platinum {
+    color: $color-platinum;
+}
+
+.h1 {
+    @include _h();
+    @include text-light();
+    font-size: 42px;
+    line-height: 54px;
+}
+
+.h2 {
+    @include _h();
+    @include text-light();
+    font-size: 38px;
+    line-height: 38px;
+}
+
+.h3 {
+    @include _h();
+    @include text-light();
+    font-size: 34px;
+}
+
+.line-height-h3, .line-height-h3::before, .line-height-h3::after {
+    line-height: 34px;
+}
+
+.h4 {
+    @include _h();
+    font-size: 30px;
+}
+
+.h6 {
+    @include _h();
+    font-size: 22px;
+    line-height: 33px;
+}
+
+.h7 {
+    @include _h();
+    @include text-bold();
+    font-size: 20px;
+}
+
+.line-height-h7, .line-height-h7::before, .line-height-h7::after {
+    line-height: 20px;
+}
+
+.h8 {
+    @include _h();
+    @include text-light();
+    font-size: 20px;
+}
+
+.h9 {
+    @include _h();
+    font-size: 16px;
+}
+
+.h10 {
+    @include _h();
+    @include text-thin();
+    font-size: 11px;
+}
+
+.no-pointer {
+    cursor: default;
+}
+
+.card-paragraph {
+    text-align: left;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.bullets-spaced-tn {
+    li {
+        padding-top: ($padding-tn / 2);
+        padding-bottom: ($padding-tn / 2);
+    }
+}
+
+.bullets-light {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+
+    li {
+        padding-left: 1.5em;
+
+        &::before {
+            font-size: 14px;
+            margin-left: -1.5em;
+            padding-right: 0.85em;
+            content: "\25CF";
+        }
+    }
+}
+
+.code {
+    background-color: $color-black;
+    color: $color-green;
+    font-family: monospace;
+    word-wrap: break-word;
+    padding: 10px;
+}

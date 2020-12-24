@@ -1,0 +1,156 @@
+@import '../mixins/layout';
+@import '../mixins/text';
+@import '../mixins/forms';
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.75);
+    padding: 10vh 10vw;
+    opacity: 0;
+    transition: opacity $modalAnimSpeed linear;
+    @include flex-col();
+    justify-content: center;
+    align-self: center;
+    box-sizing: border-box;
+
+    > .inner {
+        @include flex-col();
+        background: $color-stardust;
+        border-radius: $button-border-radius * 2;
+        color: $color-white;
+        width: 100%;
+        height: 100%;
+        min-height: 250px;
+        overflow: visible;
+        margin: 0 auto;
+        position: relative;
+            
+        .close {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            z-index: 2;
+        }
+
+        .stacked-pane-container {
+            .stacked-pane {
+                background: $color-stardust;
+            }
+        }
+
+        > .content {
+            flex: 1;
+            padding: 25px;
+            min-height: 350px;
+            max-height: 100%;
+            overflow-y: auto;
+
+            h1 {
+                margin-top: 0;
+                @extend .h4;
+                //margin: 0px 0;
+            }
+
+            .page-header-sub {
+                color: $color-grey-4;
+                line-height: 1.5em;
+            }
+        }
+
+        > .status {
+            display: flex;
+            justify-content: center;
+            padding: 0 0 20px;
+            text-align: center;
+
+            &.success {
+                @include text-green();
+                font-size: 1.5em;
+            }
+
+            &.error {
+                @include text-error();
+            }
+        }
+
+        > .actions {
+            @include form-actions();
+        }
+    }
+
+    &.loaded {
+        opacity: 1;
+        transition: opacity $modalAnimSpeed linear;
+    }
+}
+
+/*
+body {
+    &.modal {
+        //overflow-y: hidden;
+
+        .modal-backdrop {
+            @extend .fixed-full;
+            opacity: 1;
+            //overflow: auto;
+        }
+    }
+
+    &.modal.modal-closing .modal-backdrop {
+        opacity: 0;
+    }
+}
+
+.modal-backdrop {
+    @extend .flex-row;
+    @extend .center;
+    @extend .middle;
+    @extend .background-white-paper;
+    @extend .fixed;
+    z-index: $z-modal-backdrop;
+    cursor: url("#{$static-image-url}/icons/x.svg"), default;
+    transition: opacity $trans-md linear;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    //overflow: hidden;
+
+    .modal-content {
+        @include flex-col();
+        @extend .reactive-width-content;
+        @extend .pad-t-sm;
+        @extend .pad-lr-md;
+        @extend .pad-b-xl;
+        @extend .box-shadow-2;
+        @extend .background-white;
+        opacity: 1;
+        z-index: $z-modal-window;
+        cursor: default;
+
+        .modal-header {
+            @extend .flex-row;
+            @extend .margin-b-lg;
+
+            .modal-close {
+                @extend .flex-grow-0;
+                @extend .pointer;
+            }
+        }
+    }
+}
+*/
+
+
+#app-container {
+    &.light {
+        .modal {
+            background: rgba(255,255,255,.75);
+        }
+    }
+}

@@ -1,9 +1,8 @@
 @import './text';
 
 @mixin _input() {
-    display: inline-block;
-    background-color: white;
     @include text-light();
+    display: inline-block;
     border-radius: $button-border-radius;
     border: 1px solid $color-grey-1;
     padding: $padding-tn;

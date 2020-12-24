@@ -1,120 +1,233 @@
+var path = require("path");
 const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { ESBuildPlugin } = require('esbuild-loader');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, 'build');
-const APP_DIR = path.resolve(__dirname, 'src');
-const PORT = 5001;
+const ROOT = path.resolve( path.join(__dirname));
+const PATHS = {
+    src: path.join(ROOT, 'src'),
+    styles: path.join(ROOT, 'src', 'style'),
+    assets: path.join(ROOT, 'static'),
+    build: path.join(ROOT, 'build'),
+    modules: path.join(ROOT, 'node_modules')
+};
 
-let config = {
+module.exports = {
+    name: 'browser',
+    cache: true,
+    devtool: 'eval',
+
     mode: 'development',
+
+    context: ROOT,
 
     entry: {
         app: [
-            'webpack-dev-server/client?http://localhost:' + PORT,
-            'webpack/hot/dev-server',
-            //'react-hot-loader/patch',
-            APP_DIR + '/entry.tsx'
+            path.join(PATHS.src, 'entry.tsx')
         ]
     },
 
     output: {
+        path: PATHS.build,
         publicPath: '/',
-        path: BUILD_DIR,
-        filename: '[name].[hash].js',
-        chunkFilename: 'hot-update.js',
-        hotUpdateMainFilename: 'hot-update-chunk.json',
-        hotUpdateChunkFilename: 'hot-update-chunk.js',
-    },
-
-    resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
-	    alias: {
-          shared: path.resolve(__dirname, "../shared/"),
-          client: path.resolve(__dirname, "./src/"),
-          components: path.resolve(__dirname, "./src/components"),
-          lib: path.resolve(__dirname, "./src/lib")
-        }
+        //filename: '[name].[hash].js',
+        filename: '[name].js',
+        chunkFilename: '[id].chunk.js',
     },
 
     module: {
+
         rules: [
-            { 
-                test: /\.(t|j)sx?$/, 
-                include: [APP_DIR],
-                exclude: [/node_modules/],
-                loader: 'ts-loader'
+
+            {
+                test: /\.(j|t)sx?$/,
+                include: [PATHS.src], 
+                exclude: [PATHS.modules],
+                use: [
+                    {
+                        
+                        loader: 'esbuild-loader',
+                        options: {
+                            loader: 'tsx', // Or 'ts' if you don't need tsx
+                            target: 'esnext'
+                        }
+                    }
+                ]
             },
 
             {
                 test: /\.scss$/,
-                include: [
-                    APP_DIR
-                ],
-                exclude: /node_modules/,
-
+                include: [PATHS.styles, PATHS.src],
+                exclude: [PATHS.modules],
                 use: [
                     'style-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: () => [require('autoprefixer')({
-                                'browsers': ['> 1%', 'last 2 versions']
-                            })],
-                        }
-                    },
+                    'css-loader',
                     'sass-loader'
+                    // {
+                    //     loader: 'postcss-loader',
+                    //     options: {
+                    //         postcssOptions: {
+                    //             plugins: [
+                    //                 ['postcss-preset-env'],
+                    //                 ['autoprefixer']
+                    //             ],
+                    //         },
+                    //     },
+                    // },
                 ]
             },
 
             {
-                test: /\.(png|jpg|gif|svg|webp|ico|woff|woff2|eot|otf|ttf|css)$/,
-                use: [
-                {
-                    loader: 'resolve-url-loader',
-                    options: {
-                        root: "/schemedream"
-                    }
+                test: /.*\.(ttf|eot|woff|woff2|svg|gif|png|jpe?g|svg)$/,
+                loader: "file-loader",
+                include: [PATHS.assets, PATHS.src], 
+                exclude: [PATHS.modules],
+                options: {
+                    name: "[name].[ext]",
+                    outputPath: (url, resourcePath, context) => {
+                        const relativePath = path.relative(context, resourcePath);
+                        console.log("RELATIVE", relativePath, url)
+            
+                        // ignore SVG file if its relative path contains "fonts"
+                        if (/\/img\//.test(relativePath)) {
+                            return `static/img/${url}`;
+                        }
+
+                        // ignore SVG file if its relative path contains "images"
+                        if (/\/fonts\//.test(relativePath)) {
+                            return `static/fonts/${url}`;
+                        }
+
+                        return url;
+                    },
                 },
-                {
-                    loader: 'file-loader',
-                    options: {}
-                }
-                ]
-            }
+            },
+
+
         ]
     },
 
-    plugins: [
-        // Clean previous client builds
-        new CleanWebpackPlugin(['build/app.*.js', 'build/app.*.css'], {
-            root:     path.resolve(__dirname),
-            verbose:  true,
-            allowExternal: true,
-            watch: true
-        }),
-    
-        new webpack.HotModuleReplacementPlugin(),
+    plugins: [ 
 
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.template.html',
+        new CopyPlugin( {
+            patterns: [
+                { from: PATHS.assets, to: path.join(PATHS.build, 'static') }
+            ]
         }),
-            
-        new webpack.SourceMapDevToolPlugin({})
+
+        new ESBuildPlugin(),
+        
+        new HtmlWebpackPlugin({
+            template: 'index.template.html',
+            publicPath: ''
+        })
+
+        // new CleanWebpackPlugin(['build/app.*.js', 'build/app.*.css'], {
+        //     root:     path.resolve(__dirname),
+        //     verbose:  true,
+        //     allowExternal: true,
+        //     watch: true
+        // }),
+    
+        //new webpack.SourceMapDevToolPlugin({})
+
+        // new webpack.DllReferencePlugin({
+        //     context: PATHS.src,
+        //     manifest: path.join(PATHS.build, 'vendor-manifest.json')
+        // }),
+        /*
+        // new ExtractTextPlugin('[name].[chunkhash].css')
+        new ExtractTextPlugin('css/[name].css', {
+            publicPath: '/css/',
+            allChunks: true
+        })
+        */
     ],
+
+    // optimization: {
+    //     +     minimize: true,
+    //     +     minimizer: [
+    //     +       new ESBuildMinifyPlugin({
+    //     +         target: 'es2015' // Syntax to compile to (see options below for possible values)
+    //     +       })
+    //     +     ],
+    //     +   },
+
+    resolve: {
+        extensions: [".js", ".ts", ".jsx", ".tsx", ".scss"],
+        //roots: [PATHS.src],
+        modules: [PATHS.modules],
+        alias: {
+            'react-dom': '@hot-loader/react-dom',
+            client: PATHS.src,
+            components: path.join(PATHS.src, 'components'),
+            lib: path.join(PATHS.src, 'lib'),
+            utils: path.join(PATHS.src, 'lib', 'utils'),
+            models: path.join(PATHS.src, 'lib', 'models'),
+            data: path.join(PATHS.src, 'data'),
+            style: PATHS.styles,
+            config: path.join(PATHS.src, 'config')
+        }
+    },
+    
+    performance: {
+        hints: false
+    },
 
     devServer: {
         hot: true,
-        contentBase: './src',
-        path: './build',
-        publicPath: '/schemedream',
-        public: 'http://localhost:' + PORT + '/schemedream',
-        port: PORT,
-        watchContentBase: true
+        contentBase: PATHS.build,
+        publicPath: 'http://localhost:8080',
+        port: 8080,
+        headers: { "Access-Control-Allow-Origin": "*" },
+        lazy: false,
+        stats: { colors: true }
     }
+}
 
-};
 
-module.exports = config;
+/*,
+{
+
+    // The configuration for the server-side rendering
+        name: "server-side rendering",
+        entry: "./server/server.js",
+        target: "node",
+        output: {
+            path: './dist',
+            filename: "server.generated.js",
+            publicPath: 'dist',
+            //libraryTarget: "commonjs2"
+        },
+        externals: /^[a-z\-0-9]+$/,
+        module: {
+            preLoaders: [
+                { test: /\.json$/, exclude: /node_modules/, loader: 'json'},
+            ],
+            loaders: [
+                {
+                    test: /\.jsx?$/,
+                    loader: 'babel',
+                    include: [              
+                        path.join(__dirname, "server"), //important for performance
+                        path.join(__dirname, "src/js")
+                    ], 
+                    query: {
+                        cacheDirectory: true, //important for performance
+                        plugins: ["transform-regenerator"],
+                        presets: ["react", "es2015"]
+                    }
+                }
+            ]
+        }
+        /*
+        module: {
+            loaders: commonLoaders.concat([
+                { test: /\.css$/,  loader: path.join(__dirname, "server", "style-collector") + "!css-loader" },
+            ])
+        }
+        *
+
+}*/

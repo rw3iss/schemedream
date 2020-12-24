@@ -1,0 +1,268 @@
+@import "../variables";
+
+
+/* Padding
+$padding-xl: 150px;
+$padding-lg: 100px;
+$padding-ml: 75px;
+$padding-md: 50px;
+$padding-sm: 40px;
+$padding-xs: 25px;
+$padding-ts: 18px;
+$padding-tn: 10px;
+*/
+
+@mixin pad-tn() {
+    padding: $padding-tn;
+}
+
+@mixin pad-ts() {
+    padding: $padding-ts;
+}
+
+@mixin pad-xs() {
+    padding: $padding-xs;
+}
+
+@mixin pad-sm() {
+    padding: $padding-sm;
+}
+
+@mixin pad-md() {
+    padding: $padding-lg;
+}
+
+@mixin pad-l-xs() {
+    padding-left: $padding-xs;
+}
+
+@mixin pad-r-xs() {
+    padding-right: $padding-xs;
+}
+
+@mixin margin-r-xs() {
+    margin-right: $padding-xs;
+}
+
+@mixin margin-l-xs() {
+    margin-left: $padding-xs;
+}
+
+@mixin pad-l-sm() {
+    padding-left: $padding-sm;
+}
+
+@mixin pad-r-sm() {
+    padding-right: $padding-sm;
+}
+
+@mixin margin-r-sm() {
+    margin-right: $padding-sm;
+}
+
+@mixin margin-l-sm() {
+    margin-left: $padding-sm;
+}
+
+@mixin pad-l-md() {
+    padding-left: $padding-md;
+}
+
+@mixin pad-r-md() {
+    padding-right: $padding-md;
+}
+
+@mixin margin-r-md() {
+    margin-right: $padding-md;
+}
+
+@mixin margin-l-md() {
+    margin-left: $padding-md;
+}
+
+@mixin pad-l-lg() {
+    padding-left: $padding-lg;
+}
+
+@mixin pad-r-lg() {
+    padding-right: $padding-lg;
+}
+
+@mixin margin-r-lg() {
+    margin-right: $padding-lg;
+}
+
+@mixin margin-l-lg() {
+    margin-left: $padding-lg;
+}
+
+@mixin pad-t-xs() {
+    padding-top: $padding-xs;
+}
+
+@mixin pad-b-xs() {
+    padding-bottom: $padding-xs;
+}
+
+@mixin pad-b-xl() {
+    padding-bottom: $padding-xl;
+}
+
+@mixin margin-b-xs() {
+    margin-bottom: $padding-xs;
+}
+
+@mixin margin-t-xs() {
+    margin-top: $padding-xs;
+}
+
+@mixin pad-t-sm() {
+    padding-top: $padding-sm;
+}
+
+@mixin pad-b-sm() {
+    padding-bottom: $padding-sm;
+}
+
+@mixin margin-b-sm() {
+    margin-bottom: $padding-sm;
+}
+
+@mixin margin-t-sm() {
+    margin-top: $padding-sm;
+}
+
+@mixin margin-t-tn() {
+    margin-top: $padding-tn;
+}
+
+@mixin pad-t-md() {
+    padding-top: $padding-md;
+}
+
+@mixin pad-t-md-override() {
+    padding-top: $padding-md !important;
+}
+
+@mixin pad-b-md() {
+    padding-bottom: $padding-md;
+}
+
+@mixin margin-b-md() {
+    margin-bottom: $padding-md;
+}
+
+@mixin margin-t-md() {
+    margin-top: $padding-md;
+}
+
+@mixin pad-t-lg() {
+    padding-top: $padding-lg;
+}
+
+@mixin pad-t-xl() {
+    padding-top: $padding-xl;
+}
+
+@mixin pad-b-lg() {
+    padding-bottom: $padding-lg;
+}
+
+@mixin margin-b-lg() {
+    margin-bottom: $padding-lg;
+}
+
+@mixin margin-t-lg() {
+    margin-top: $padding-lg;
+}
+
+@mixin pad-t-ml() {
+    padding-top: $padding-ml;
+}
+
+@mixin pad-b-ml() {
+    padding-bottom: $padding-ml;
+}
+
+@mixin margin-b-ml() {
+    margin-bottom: $padding-ml;
+}
+
+@mixin margin-t-ml() {
+    margin-top: $padding-ml;
+}
+
+@mixin pad-tb-xl() {
+    padding-bottom: $padding-xl;
+    padding-top: $padding-xl;
+}
+
+@mixin margin-b-xl() {
+    padding-bottom: $padding-xl;
+}
+
+@mixin pad-tb-lg() {
+    padding-bottom: $padding-lg;
+    padding-top: $padding-lg;
+}
+
+@mixin pad-tb-md() {
+    padding-bottom: $padding-md;
+    padding-top: $padding-md;
+}
+
+@mixin pad-tb-ml() {
+    padding-bottom: $padding-ml;
+    padding-top: $padding-ml;
+}
+
+@mixin pad-tb-sm() {
+    padding-bottom: $padding-sm;
+    padding-top: $padding-sm;
+}
+
+@mixin pad-tb-xs() {
+    padding-bottom: $padding-xs;
+    padding-top: $padding-xs;
+}
+
+@mixin pad-tb-tn() {
+    padding-bottom: $padding-tn;
+    padding-top: $padding-tn;
+}
+
+@mixin margin-tb-ts() {
+    margin-bottom: $padding-ts;
+    margin-top: $padding-ts;
+}
+
+@mixin margin-tb-md() {
+    margin-bottom: $padding-md;
+    margin-top: $padding-md;
+}
+
+@mixin margin-tb-lg() {
+    margin-bottom: $padding-lg;
+    margin-top: $padding-lg;
+}
+
+@mixin margin-b-ts() {
+    margin-bottom: $padding-ts;
+}
+
+@mixin margin-b-tn() {
+    margin-bottom: $padding-tn;
+}
+
+@mixin margin-t-ts() {
+    margin-top: $padding-ts;
+}
+
+@mixin pad-lr-md() {
+    padding-left: $padding-md;
+    padding-right: $padding-md;
+}
+@mixin margin-lr-sm() {
+    margin-left: $padding-sm;
+    margin-right: $padding-sm;
+}
