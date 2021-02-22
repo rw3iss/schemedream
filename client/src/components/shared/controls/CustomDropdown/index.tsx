@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './style';
+import './style.scss';
 
 const DEFAULT_LABEL_POSITION = 'left';
 

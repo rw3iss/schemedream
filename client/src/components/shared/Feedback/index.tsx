@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import EventBus from 'eventbusjs';
-import HelpApi from 'client/api/HelpApi';
-import StackedPaneContainer from 'client/components/shared/StackedPanes/StackedPaneContainer';
-import StackedPane from 'client/components/shared/StackedPanes/StackedPane';
+import HelpApi from 'api/HelpApi';
+import StackedPaneContainer from 'components/shared/StackedPanes/StackedPaneContainer';
+import StackedPane from 'components/shared/StackedPanes/StackedPane';
 
 import './style.scss';
 

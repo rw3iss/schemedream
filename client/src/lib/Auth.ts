@@ -1,8 +1,8 @@
 // Manages client authentication
-import LocalStorage from 'client/lib/utils/LocalStorage';
-//import AuthApi from 'client/api/AuthApi';
-//import UsersApi from 'client/api/UsersApi';
-import CookieUtils from 'client/lib/utils/CookieUtils';
+import LocalStorage from 'lib/utils/LocalStorage';
+//import AuthApi from 'api/AuthApi';
+//import UsersApi from 'api/UsersApi';
+import CookieUtils from 'lib/utils/CookieUtils';
 import EventBus from 'eventbusjs';
 
 export default class Auth {

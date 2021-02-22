@@ -3,7 +3,7 @@ import Scheme from 'lib/models/Scheme';
 import Color from 'lib/models/Color';
 import Icon from 'components/shared/Icon';
 
-import './style';
+import './style.scss';
 
 interface IProps {
     scheme: Scheme;

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import ColorEdit from 'client/components/schemes/ColorEdit';
+import ColorEdit from 'components/schemes/ColorEdit';
 import Color from 'lib/models/Color';
+import Scheme from 'lib/models/Scheme';
 
-import './style';
-import Scheme from 'client/lib/models/Scheme';
+import './style.scss';
 
 interface IProps {
     scheme: Scheme;

@@ -2,10 +2,10 @@
     .      *      *        .   *    .           *       .
                         .                 o        .
               .                                .
-      .   o        S C H E M E   D R E A M        .    *
+      .   o        S C H E M E   D R E A M         .     *
                   .                           . 
-       .                      .        *            o  
-    .    .     *        o         .        .     .        .
+       .                      .        *             o   
+    .    .     *        o         .        .     .      .
 
 ## Setup:
 
@@ -16,7 +16,7 @@
     cd client
     npm run dev
 
-Then go to http://localhost:5001
+Then go to http://localhost:3030
 
 ## To build:
     
@@ -36,4 +36,4 @@ Then host the buiild folder from a static web server.
 ## Technologies:
 - TypeScript
 - React v15
-- Webpack v4
+- esbuild

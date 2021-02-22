@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LocalStorage from 'client/lib/utils/LocalStorage';
+import LocalStorage from 'lib/utils/LocalStorage';
 import Project from 'lib/models/Project';
 import Scheme from 'lib/models/Scheme';
 import Color from 'lib/models/Color';
@@ -12,7 +12,7 @@ import Icon from 'components/shared/Icon';
 import Keys from 'lib/Keys';
 import SD from 'lib/api/SchemeDream';
 
-import './style';
+import './style.scss';
 
 interface IState {
     projects: Project[];

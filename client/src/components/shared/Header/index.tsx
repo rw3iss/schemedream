@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import AutoHideHeader from '../AutoHideHeader';
 import Icon from '../Icon';
 
-import './style';
+import './style.scss';
 
 export default class Header extends React.Component<any, any> {
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import './style';
+import './style.scss';
 
 export default class HeaderPortal extends React.Component<any, any> {
 

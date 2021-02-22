@@ -1,4 +1,4 @@
-import Auth from 'client/lib/Auth';
+import Auth from 'lib/Auth';
 
 export default class UserUtils {
     /* 

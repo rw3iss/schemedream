@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Color from 'client/lib/models/Color';
+import Color from 'lib/models/Color';
 import ColorComplements from 'components/schemes/ColorComplements';
 import EditableLabel from 'components/shared/EditableLabel';
 

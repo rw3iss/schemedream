@@ -4,7 +4,7 @@ import Project from 'lib/models/Project';
 import ProjectView from 'components/views/ProjectView';
 import { notify } from 'lib/utils/Notify';
 
-import './style';
+import './style.scss';
 
 export default class Dashboard extends React.Component<any, any> {
 

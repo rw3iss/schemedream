@@ -2,7 +2,7 @@ import * as React from 'react';
 import Project from 'client/lib/models/Project';
 import SchemeDesigner from 'client/components/schemes/SchemeDesigner';
 
-import './style';
+import './style.scss';
 
 interface IProps {
     project: Project;

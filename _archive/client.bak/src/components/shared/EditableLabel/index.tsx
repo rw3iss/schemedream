@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Auth from 'client/lib/Auth';
 import EventBus from 'eventbusjs';
 
-import './style';
+import './style.scss';
 
 export default class EditableLabel extends React.Component<any, any> {
     textInput: HTMLInputElement | undefined;

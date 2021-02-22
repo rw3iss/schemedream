@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { createHashHistory } from 'history';
-import Auth from 'client/lib/Auth';
-import Dashboard from 'client/components/views/Dashboard';
+import Auth from 'src/lib/Auth';
+import Dashboard from 'components/views/Dashboard';
 //import SecureRoute from 'components/shared/SecureRoute';
 
 //const history = createHashHistory();

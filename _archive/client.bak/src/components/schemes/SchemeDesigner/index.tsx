@@ -2,7 +2,7 @@ import * as React from 'react';
 import ColorPickingArea from 'components/schemes/ColorPickingArea';
 import { Color } from 'lib/models/Colors';
 
-import './style';
+import './style.scss';
 import ColorScheme from 'client/lib/models/ColorScheme';
 
 interface IProps {

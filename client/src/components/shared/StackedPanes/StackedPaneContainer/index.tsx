@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import './style';
+import './style.scss';
 
 export default class StackedPaneContainer extends React.Component<any, any> {
 

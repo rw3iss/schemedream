@@ -1,7 +1,7 @@
 
-var config: any = require('client/config/config.json');
 import nanoajax from 'nanoajax';
 import EventBus from 'eventbusjs';
+import config from 'config/config.json';
 
 export default class BaseApi {
 

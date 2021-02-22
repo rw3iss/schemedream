@@ -1,10 +1,10 @@
 import * as React from 'react';
-import Routes from '../config/routes';
-import Header from 'client/components/shared/Header';
-import ErrorHandler from 'client/components/shared/ErrorHandler';
-import Loader from 'client/components/shared/Loader';
+import Routes from '../routes';
+import Header from './shared/Header';
+import ErrorHandler from './shared/ErrorHandler';
+import Loader from './shared/Loader';
 
-import '../style/global.scss';
+import './style.scss';
 
 export default class App extends React.Component<any, any> {
 

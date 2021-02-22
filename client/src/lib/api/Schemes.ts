@@ -1,5 +1,5 @@
 import Scheme from '../models/Scheme';
-import LocalStorage from 'client/lib/utils/LocalStorage';
+import LocalStorage from 'lib/utils/LocalStorage';
 import { v4 as uuidv4 } from 'uuid';
 import Keys from '../Keys';
 

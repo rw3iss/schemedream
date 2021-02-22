@@ -2,7 +2,7 @@ import * as React from 'react';
 import EventBus from 'eventbusjs';
 import { Color } from 'lib/models/Colors';
 
-import './style';
+import './style.scss';
 
 let mounted = true;
 export default class ColorComplements extends React.Component<any, any> {
